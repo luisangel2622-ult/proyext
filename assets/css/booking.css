@@ -89,7 +89,7 @@
   text-transform: uppercase;
   color: var(--text-3);
 }
-.slot-group__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 8px; }
+.slot-group__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 8px; }
 .slot-group__grid .chip { display: grid; }
 .slot-group__grid .chip__face { justify-items: center; padding: 10px 6px; font-family: var(--font-mono); font-size: 0.875rem; font-variant-numeric: tabular-nums; }
 .booker__hint { margin-top: 12px; color: var(--text-3); font-size: 0.875rem; }

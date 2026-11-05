@@ -54,7 +54,7 @@ Luego entra en http://localhost:8000
 | Número de WhatsApp (se usó el mismo que el de llamadas) | `assets/js/config.js` → `whatsapp` |
 | Días festivos o vacaciones sin servicio | `assets/js/config.js` → `closedDates` |
 | Horario | `assets/js/config.js` → `hours`, y los textos de horario en `index.html` |
-| Aviso «Vista previa» | Borra la línea `<p class="demo-pill">` al final de `index.html` cuando los precios sean los reales |
+| Aviso «Precios y duraciones de ejemplo» | Borra las dos líneas `<p class="demo-note">` de `index.html` (Servicios y Reservas) cuando los precios sean los reales |
 
 ## Notas
 

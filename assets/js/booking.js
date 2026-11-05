@@ -88,12 +88,19 @@
   var noteInput = byId('bk-note');
   var summaryView = byId('bk-summary');
   var doneView = byId('bk-done');
+  var summaryBox = form.querySelector('.summary');
+  var bar = byId('bk-bar');
+  var barTitle = byId('bar-title');
+  var barSub = byId('bar-sub');
+  var narrow = window.matchMedia('(max-width: 960px)');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function getService() {
     for (var i = 0; i < services.length; i++) if (services[i].id === state.service) return services[i];
     return null;
   }
   function longDay(d) { return fmtLong.format(d).replace(',', ''); }
+  function shortDay(d) { return cap(fmtWeek.format(d).replace('.', '')) + ' ' + d.getDate() + ' ' + fmtMonth.format(d).replace('.', ''); }
 
   function makeChip(group, value, build, disabled) {
     var label = document.createElement('label');
@@ -223,6 +230,42 @@
     setText('sum-time', state.time != null ? time12(state.time) : '—');
     setText('sum-length', svc ? svc.minutes + ' min' : '—');
     setText('sum-total', CUR + (svc ? svc.price : 0));
+    if (bar) {
+      barTitle.textContent = svc ? svc.name : 'Elige un servicio';
+      var when = state.day && dayMap[state.day] ? shortDay(dayMap[state.day]) : '';
+      var parts = [];
+      if (svc) parts.push(CUR + svc.price);
+      if (when) parts.push(when);
+      parts.push(state.time != null ? time12(state.time) : when ? 'elige la hora' : 'elige día y hora');
+      barSub.textContent = parts.join(' · ');
+      barSub.classList.remove('is-error');
+    }
+  }
+
+  // Barra fija en móvil: visible mientras eliges y el resumen no está a la vista
+  var stepsOn = false;
+  var summaryOn = false;
+  function syncBar() {
+    if (!bar) return;
+    var on = narrow.matches && stepsOn && !summaryOn && doneView.hidden;
+    bar.classList.toggle('is-on', on);
+    bar.setAttribute('aria-hidden', String(!on));
+    if (on) bar.removeAttribute('inert'); else bar.setAttribute('inert', '');
+    document.documentElement.classList.toggle('bar-on', on);
+  }
+  if (bar && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) { stepsOn = en[0].isIntersecting; syncBar(); }).observe(form.querySelector('.booker__steps'));
+    new IntersectionObserver(function (en) { summaryOn = en[0].isIntersecting; syncBar(); }, { threshold: 0.35 }).observe(summaryBox);
+    if (narrow.addEventListener) narrow.addEventListener('change', syncBar);
+    byId('bar-go').addEventListener('click', function () {
+      if (form.requestSubmit) form.requestSubmit();
+      else form.dispatchEvent(new Event('submit', { cancelable: true }));
+    });
+  }
+  function fail(msg, focusId) {
+    errorBox.textContent = msg;
+    if (bar) { barSub.textContent = msg; barSub.classList.add('is-error'); }
+    if (focusId) focusGroup(focusId);
   }
 
   form.addEventListener('change', function (e) {
@@ -233,7 +276,7 @@
     else if (t.name === 'time') { state.time = parseInt(t.value, 10); updateSummary(); }
     errorBox.textContent = '';
   });
-  nameInput.addEventListener('input', function () { errorBox.textContent = ''; });
+  nameInput.addEventListener('input', function () { errorBox.textContent = ''; if (barSub.classList.contains('is-error')) updateSummary(); });
 
   function focusGroup(id) {
     var box = byId(id);
@@ -246,11 +289,11 @@
     e.preventDefault();
     var name = nameInput.value.trim();
     var note = noteInput ? noteInput.value.trim() : '';
-    if (!state.service) { errorBox.textContent = 'Elige un servicio para continuar.'; return focusGroup('bk-services'); }
-    if (!state.day) { errorBox.textContent = 'Elige el día de tu cita.'; return focusGroup('bk-days'); }
-    if (state.time == null) { errorBox.textContent = 'Elige un horario.'; return focusGroup('bk-slots'); }
+    if (!state.service) return fail('Elige un servicio para continuar.', 'bk-services');
+    if (!state.day) return fail('Elige el día de tu cita.', 'bk-days');
+    if (state.time == null) return fail('Elige un horario.', 'bk-slots');
     if (!name) {
-      errorBox.textContent = 'Escribe tu nombre para continuar.';
+      fail('Escribe tu nombre para continuar.');
       nameInput.focus({ preventScroll: true });
       nameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
@@ -277,11 +320,14 @@
     var titleEl = byId('done-title');
     titleEl.setAttribute('tabindex', '-1');
     titleEl.focus({ preventScroll: true });
+    syncBar();
+    if (narrow.matches) summaryBox.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
   });
 
   byId('bk-edit').addEventListener('click', function () {
     doneView.hidden = true;
     summaryView.hidden = false;
+    syncBar();
     var submit = form.querySelector('button[type="submit"]');
     if (submit) submit.focus({ preventScroll: true });
   });

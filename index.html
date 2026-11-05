@@ -7,6 +7,8 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Don Morell, barbería de caballeros en Plaza Marfil, Tuxtla Gutiérrez. Corte, fade, barba y afeitado con navaja. Reserva tu cita en línea o por WhatsApp.">
 <meta name="color-scheme" content="light dark">
+<meta name="format-detection" content="telephone=no, date=no, email=no, address=no">
+<meta name="apple-mobile-web-app-title" content="Don Morell">
 <meta name="theme-color" content="#F5F2EB" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0B0B0C" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
@@ -16,13 +18,15 @@
 <meta property="og:image" content="assets/img/og-don-morell.png">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@1,500&family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/hero.css">
 <link rel="stylesheet" href="assets/css/sections.css">
 <link rel="stylesheet" href="assets/css/booking.css">
+<link rel="stylesheet" href="assets/css/mobile.css">
 <script>
   (function () {
     var d = document.documentElement;
@@ -240,6 +244,7 @@
         <p class="eyebrow">Servicios</p>
         <h2 class="display" id="services-title">Hechos a tu medida, <span class="serif">al milímetro.</span></h2>
         <p class="lead">Cada servicio incluye una consulta previa y el acabado con producto profesional.</p>
+        <p class="demo-note"><span aria-hidden="true"></span>Precios y duraciones de ejemplo</p>
       </header>
 
       <div class="bento">
@@ -393,6 +398,7 @@
         <p class="eyebrow">Reservas</p>
         <h2 class="display" id="booking-title">Tu próximo corte empieza <span class="serif">aquí.</span></h2>
         <p class="lead">Elige servicio, día y hora. Te confirmamos por WhatsApp.</p>
+        <p class="demo-note"><span aria-hidden="true"></span>Precios y duraciones de ejemplo</p>
       </header>
       <form class="booker" id="booker" novalidate data-reveal>
         <div class="booker__steps">
@@ -414,11 +420,11 @@
             <div class="fields">
               <div class="field">
                 <label class="field__label" for="bk-name">Nombre</label>
-                <input class="input" id="bk-name" name="name" type="text" autocomplete="given-name" placeholder="¿Cómo te llamamos?" maxlength="40">
+                <input class="input" id="bk-name" name="name" type="text" autocomplete="given-name" autocapitalize="words" enterkeyhint="next" placeholder="¿Cómo te llamamos?" maxlength="40">
               </div>
               <div class="field">
                 <label class="field__label" for="bk-note">Nota <span>(opcional)</span></label>
-                <input class="input" id="bk-note" name="note" type="text" placeholder="Barbero de preferencia, estilo…" maxlength="120">
+                <input class="input" id="bk-note" name="note" type="text" autocomplete="off" autocapitalize="sentences" enterkeyhint="done" placeholder="Barbero de preferencia, estilo…" maxlength="120">
               </div>
             </div>
           </div>
@@ -447,6 +453,10 @@
           </div>
         </aside>
       </form>
+    </div>
+    <div class="bk-bar" id="bk-bar" aria-hidden="true" inert>
+      <p class="bk-bar__info"><strong id="bar-title">Elige un servicio</strong><span id="bar-sub">Elige día y hora</span></p>
+      <button type="button" class="btn btn--primary" id="bar-go">Confirmar</button>
     </div>
   </section>
 
@@ -568,6 +578,5 @@
   <svg class="footer__word" viewBox="0 0 259.8 29.48" aria-hidden="true"><use href="#dm-wordmark"/></svg>
 </footer>
 
-<p class="demo-pill" role="note"><span class="demo-pill__dot" aria-hidden="true"></span>Vista previa ·&nbsp;<span class="demo-pill__long">precios y duraciones de ejemplo</span><span class="demo-pill__short">precios de ejemplo</span></p>
 </body>
 </html>

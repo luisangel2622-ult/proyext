@@ -307,6 +307,8 @@
   });
 
   /* ---------- Arranque ---------- */
+  // En iOS, :active solo responde al toque si existe un listener de touchstart
+  document.addEventListener('touchstart', function () {}, { passive: true });
   window.addEventListener('scroll', request, { passive: true });
   window.addEventListener('resize', function () { measure(); request(); });
   window.addEventListener('load', function () { measure(); request(); });

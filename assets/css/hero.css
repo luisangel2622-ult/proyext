@@ -46,7 +46,7 @@
   .hero__sep { display: none; }
 }
 
-.hero { --medal: clamp(188px, 32vmin, 340px); }
+.hero { --medal: clamp(150px, min(52vw, 32vh), 340px); --medal: clamp(150px, min(52vw, 32svh), 340px); }
 .hero__medal { margin-block: calc(var(--medal) * 0.17) calc(var(--medal) * 0.15); font-size: inherit; }
 .medal {
   position: relative;
