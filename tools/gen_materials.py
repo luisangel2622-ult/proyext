@@ -1,7 +1,7 @@
 """Veta Noble · generador de materiales para la web de Don Morell.
 
 Produce texturas *sin costuras* (tileables) con ruido de Perlin periódico:
-  - marble-light.webp  · mármol marfil con vetas grises y champán
+  - marble-light.webp  · mármol blanco Calacatta con vetas grises y oro
   - marble-dark.webp   · mármol Nero Marquina con vetas marfil y oro
   - floor-checker.webp · damero de mármol marfil y Nero Marquina
   - leather-light.webp / leather-dark.webp · capitoné (cuero acolchado)
@@ -97,11 +97,11 @@ def dither(img, amt=0.9, seed=5):
 
 
 def marble_light(f):
-    img = lerp(hexrgb('#F7F3EC'), hexrgb('#ECE5D8'), f['cloud'] ** 1.2)
-    img = lerp(img, hexrgb('#DDD5C7'), np.clip(f['halo1'] * 0.55, 0, 1))
+    img = lerp(hexrgb('#FEFEFC'), hexrgb('#F1F0EC'), f['cloud'] ** 1.2)
+    img = lerp(img, hexrgb('#E4E3DF'), np.clip(f['halo1'] * 0.5, 0, 1))
     veins = np.clip(f['core1'] * 0.62 + f['core2'] * 0.34 + f['branch'] * 0.42 + f['fine'] * 0.2, 0, 1)
-    img = lerp(img, hexrgb('#978F82'), veins)
-    img = lerp(img, hexrgb('#BC9A5E'), np.clip(f['core1'] * f['gold'] * 0.75, 0, 1))
+    img = lerp(img, hexrgb('#9EA1A6'), veins)
+    img = lerp(img, hexrgb('#C6A66A'), np.clip(f['core1'] * f['gold'] * 0.7, 0, 1))
     return dither(img)
 
 
@@ -164,7 +164,7 @@ btn = np.exp(-(db / 0.055) ** 2)
 fold = np.exp(-((0.5 - dc) / 0.018) ** 2) * (1 - np.exp(-(db / 0.35) ** 2)) * 0.6 + np.exp(-((0.5 - dc) / 0.05) ** 2) * 0.35
 pore = np.random.default_rng(7).normal(0, 1, (S, S))
 for name, c0, c1, ink, hi, k in (
-        ('light', '#D9CFBE', '#FBF7F0', '#8E8270', '#FFFFFF', 2.0),
+        ('light', '#DEDCD7', '#FFFFFF', '#9C978E', '#FFFFFF', 1.6),
         ('dark', '#060606', '#2A2826', '#000000', '#5A5650', 1.6)):
     img = lerp(hexrgb(c0), hexrgb(c1), lambert)
     img = lerp(img, hexrgb(ink), np.clip(fold * 0.8 + btn * 0.95, 0, 1))

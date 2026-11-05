@@ -82,6 +82,11 @@
     a.href = waBase + '?text=' + encodeURIComponent('Hola, Don Morell. Quiero información para agendar una cita.');
   });
 
+  // Mapa satelital: aparece con un fundido cuando termina de cargar
+  Array.prototype.forEach.call(document.querySelectorAll('.map__frame'), function (f) {
+    f.addEventListener('load', function () { f.classList.add('is-loaded'); });
+  });
+
   /* ---------- Navegación ---------- */
   var nav = $('#nav');
   var toggle = $('.nav__toggle');
@@ -93,25 +98,28 @@
     toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
     menu.setAttribute('aria-hidden', String(!open));
     if (open) menu.removeAttribute('inert'); else menu.setAttribute('inert', '');
+    if (open) {
+      var first = menu.querySelector('.menu__links a');
+      if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 350);
+    }
   }
   toggle.addEventListener('click', function () { setMenu(!nav.classList.contains('is-open')); });
-  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a') || e.target.closest('[data-close-menu]')) setMenu(false); });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); toggle.focus(); }
   });
   var desktop = window.matchMedia('(min-width: 901px)');
   if (desktop.addEventListener) desktop.addEventListener('change', function (m) { if (m.matches) setMenu(false); });
 
-  var links = $$('.nav__links a');
+  var links = $$('.nav__links a, .menu__links a');
   var linkFor = {};
-  links.forEach(function (a) { linkFor[a.getAttribute('href').slice(1)] = a; });
+  links.forEach(function (a) { var id = a.getAttribute('href').slice(1); (linkFor[id] = linkFor[id] || []).push(a); });
   if ('IntersectionObserver' in window) {
     var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (!en.isIntersecting) return;
         links.forEach(function (l) { l.classList.remove('is-active'); });
-        var l = linkFor[en.target.id];
-        if (l) l.classList.add('is-active');
+        (linkFor[en.target.id] || []).forEach(function (l) { l.classList.add('is-active'); });
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     $$('main > section').forEach(function (s) { spy.observe(s); });
