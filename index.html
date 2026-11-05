@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grafito Barber Studio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Grafito Barber Studio: cortes de precisión, barba a navaja y el ritual completo de barbería en un estudio diseñado al milímetro. Reserva tu cita online.">
+<meta name="theme-color" content="#050607">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Grafito Barber Studio">
+<meta property="og:description" content="Tan preciso. Tan elegante. Tan tú. Reserva tu cita online.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/hero.css">
+<link rel="stylesheet" href="assets/css/sections.css">
+<link rel="stylesheet" href="assets/css/booking.css">
+<script>
+  document.documentElement.classList.add('js');
+  setTimeout(function () { if (!window.__grafitoReady) document.documentElement.classList.remove('js'); }, 2500);
+</script>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/hero-canvas.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/booking.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BarberShop",
+  "name": "Grafito Barber Studio",
+  "description": "Barbería de precisión: cortes, barba a navaja y rituales completos.",
+  "telephone": "+1 555 014 2014",
+  "priceRange": "$$",
+  "address": { "@type": "PostalAddress", "streetAddress": "Av. Principal 1450, local 3", "addressLocality": "Centro" },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "10:00", "closes": "21:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "20:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "15:00" }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></g></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></g></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#top" class="brand" aria-label="Grafito Barber Studio, inicio">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16 2.6 27.6 9.3v13.4L16 29.4 4.4 22.7V9.3z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M10.2 20.8 21.8 11.2" stroke="#d6a35c" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="brand__word">GRAFITO</span>
+    </a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="#estudio">Estudio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#ritual">Ritual</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#club">Club</a>
+      <a href="#visitanos">Visítanos</a>
+    </nav>
+    <a href="#reserva" class="btn btn--brass btn--sm nav__cta">Reservar</a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+      <span></span><span></span>
+    </button>
+  </div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+  <div class="menu" id="menu" aria-hidden="true" inert>
+    <nav class="menu__links" aria-label="Menú móvil">
+      <a href="#estudio" style="--i:0">Estudio</a>
+      <a href="#servicios" style="--i:1">Servicios</a>
+      <a href="#ritual" style="--i:2">Ritual</a>
+      <a href="#equipo" style="--i:3">Equipo</a>
+      <a href="#club" style="--i:4">Club</a>
+      <a href="#visitanos" style="--i:5">Visítanos</a>
+    </nav>
+    <a href="#reserva" class="btn btn--brass menu__cta" style="--i:6">Reserva tu cita</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__veil" aria-hidden="true"></div>
+    <div class="hero__content container">
+      <p class="eyebrow hero__eyebrow"><span class="pulse-dot" aria-hidden="true"></span>Barber Studio · Desde 2014</p>
+      <h1 class="hero__title" id="hero-title"><span class="hero__word">Grafito</span></h1>
+      <p class="hero__tagline">
+        <span style="--i:0">Tan preciso.</span>
+        <span style="--i:1">Tan elegante.</span>
+        <span style="--i:2"><span class="serif text-brass">Tan tú.</span></span>
+      </p>
+      <div class="hero__actions">
+        <a href="#reserva" class="btn btn--brass btn--lg magnetic">Reserva tu cita</a>
+        <a href="#estudio" class="link-arrow">Descubre el estudio</a>
+      </div>
+    </div>
+    <a href="#estudio" class="scroll-cue" aria-label="Bajar al estudio"><span></span></a>
+  </section>
+
+  <!-- MANIFIESTO -->
+  <section class="statement" id="estudio" aria-label="El estudio">
+    <div class="statement__sticky">
+      <div class="container">
+        <p class="eyebrow">El estudio</p>
+        <p class="statement__text" data-words>En Grafito, cada corte se diseña antes de empezar. Técnica clásica, herramientas de <em>precisión</em> y un ritual pensado alrededor de <em>ti.</em> Sin prisas. Sin atajos. Solo un resultado impecable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVAJA -->
+  <section class="razor" id="herramienta" aria-labelledby="razor-title">
+    <div class="razor__sticky">
+      <header class="razor__head container">
+        <p class="eyebrow">La herramienta</p>
+        <h2 class="display" id="razor-title">Afilada para la <span class="text-brass">perfección.</span></h2>
+      </header>
+      <div class="razor__stage">
+        <div class="razor__halo" aria-hidden="true"></div>
+        <svg class="razor__svg" viewBox="-480 -260 960 520" role="img" aria-label="Navaja de barbero que se abre al desplazarte">
+          <defs>
+            <linearGradient id="rz-steel" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#4b5058"/>
+              <stop offset=".16" stop-color="#cfd4da"/>
+              <stop offset=".42" stop-color="#8b9198"/>
+              <stop offset=".7" stop-color="#e6e9ec"/>
+              <stop offset=".86" stop-color="#ffffff"/>
+              <stop offset="1" stop-color="#737980"/>
+            </linearGradient>
+            <linearGradient id="rz-sheen" gradientUnits="userSpaceOnUse" x1="80" y1="0" x2="240" y2="0">
+              <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+              <stop offset=".5" stop-color="#ffffff" stop-opacity=".8"/>
+              <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="rz-scale" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#3b4047"/>
+              <stop offset=".14" stop-color="#22262b"/>
+              <stop offset=".55" stop-color="#121417"/>
+              <stop offset="1" stop-color="#08090a"/>
+            </linearGradient>
+            <linearGradient id="rz-brass" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f6e3bd"/>
+              <stop offset=".5" stop-color="#d6a35c"/>
+              <stop offset="1" stop-color="#8a5c27"/>
+            </linearGradient>
+            <radialGradient id="rz-floor">
+              <stop offset="0" stop-color="#000000" stop-opacity=".95"/>
+              <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <ellipse id="razor-shadow" cx="0" cy="190" rx="430" ry="28" fill="url(#rz-floor)" opacity=".8"/>
+          <g id="razor-body" transform="translate(-18 0) rotate(-2)">
+            <g id="razor-blade" transform="rotate(0)">
+              <path d="M0 -14 L70 -10 Q82 -9 82 -1 Q82 8 70 9 L0 12 L-66 13 C-78 13 -86 20 -94 30 Q-240 50 -388 44 Q-410 42 -410 12 Q-410 -20 -384 -22 L-82 -17 L-66 -16 Z" fill="url(#rz-steel)"/>
+              <path d="M-384 -21 L-82 -16" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width="1.4"/>
+              <path d="M-98 27 Q-240 45 -384 39" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.2"/>
+              <path d="M20 -13v5M28 -12.6v5M36 -12.2v5M44 -11.8v5M52 -11.4v5" stroke="#000000" stroke-opacity=".35" stroke-width="1.6"/>
+              <text x="-332" y="10" class="rz-etch">GRAFITO · 440C</text>
+              <path class="rz-sheen" d="M0 -14 L70 -10 Q82 -9 82 -1 Q82 8 70 9 L0 12 L-66 13 C-78 13 -86 20 -94 30 Q-240 50 -388 44 Q-410 42 -410 12 Q-410 -20 -384 -22 L-82 -17 L-66 -16 Z" fill="url(#rz-sheen)"/>
+            </g>
+            <path d="M-40 -42 C-56 -42 -62 -22 -62 0 C-62 22 -56 42 -40 42 L420 48 C444 48 460 28 460 0 C460 -28 444 -48 420 -48 Z" fill="url(#rz-scale)" stroke="#ffffff" stroke-opacity=".1"/>
+            <path d="M-38 -38 L420 -44" fill="none" stroke="#ffffff" stroke-opacity=".14" stroke-width="1.5"/>
+            <text x="220" y="5" class="rz-brand" text-anchor="middle">GRAFITO</text>
+            <circle cx="420" cy="0" r="6.5" fill="url(#rz-brass)"/>
+            <circle cx="0" cy="0" r="9" fill="url(#rz-brass)"/>
+            <circle cx="0" cy="0" r="3.2" fill="#5b3d18"/>
+          </g>
+        </svg>
+        <ul class="razor__specs">
+          <li><span class="spec__value">1:1</span><span class="spec__label">Una hoja nueva por cliente. Siempre.</span></li>
+          <li><span class="spec__value">30°</span><span class="spec__label">El ángulo exacto de la navaja sobre la piel.</span></li>
+          <li><span class="spec__value">45 °C</span><span class="spec__label">Toalla caliente que abre el poro antes de afeitar.</span></li>
+          <li><span class="spec__value">0,1 mm</span><span class="spec__label">De tolerancia en cada línea del perfilado.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CIFRAS -->
+  <section class="numbers" aria-label="Grafito en cifras">
+    <div class="container">
+      <div class="numbers__grid" data-stagger>
+        <div class="numbers__item">
+          <p class="numbers__value"><span data-count="12">12</span></p>
+          <p class="numbers__label">años de oficio en el barrio</p>
+        </div>
+        <div class="numbers__item">
+          <p class="numbers__value"><span data-count="38000">38.000</span><small>+</small></p>
+          <p class="numbers__label">cortes realizados</p>
+        </div>
+        <div class="numbers__item">
+          <p class="numbers__value"><span data-count="4.9" data-decimals="1">4,9</span><small>★</small></p>
+          <p class="numbers__label">valoración media en 1.240 reseñas</p>
+        </div>
+        <div class="numbers__item">
+          <p class="numbers__value"><span data-count="7">7</span></p>
+          <p class="numbers__label">días a la semana abiertos</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="services section" id="servicios" aria-labelledby="services-title">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="eyebrow">Servicios</p>
+        <h2 class="display" id="services-title">Diseñados <span class="serif">al milímetro.</span></h2>
+        <p class="lead">Cada servicio incluye consulta previa y acabado con producto profesional. Precio final, sin sorpresas.</p>
+      </header>
+
+      <div class="bento">
+        <article class="card card--xl" data-reveal>
+          <div class="card__visual card__visual--scissors" aria-hidden="true">
+            <svg class="ring" viewBox="0 0 200 200"><circle cx="100" cy="100" r="92"/></svg>
+            <svg class="draw" viewBox="0 0 24 24"><path d="M9 6a3 3 0 1 1-6 0 3 3 0 1 1 6 0" pathLength="1"/><path d="M8.12 8.12 12 12" pathLength="1"/><path d="M20 4 8.12 15.88" pathLength="1"/><path d="M9 18a3 3 0 1 1-6 0 3 3 0 1 1 6 0" pathLength="1"/><path d="M14.8 14.8 20 20" pathLength="1"/></svg>
+          </div>
+          <div class="card__body">
+            <p class="card__tag">El más pedido</p>
+            <h3>Corte Signature</h3>
+            <p>Consulta de estilo, corte a tijera y máquina, lavado y peinado con producto premium.</p>
+            <div class="card__meta"><span class="card__time">45 min</span><span class="card__price">$35</span></div>
+            <a class="link-arrow" href="#reserva" data-pick-service="signature">Reservar</a>
+          </div>
+        </article>
+
+        <article class="card card--wide" data-reveal>
+          <div class="card__body">
+            <p class="card__tag">Técnica</p>
+            <h3>Fade de Precisión</h3>
+            <p>Degradados desde la piel hasta la longitud que elijas, con transiciones invisibles.</p>
+            <div class="card__meta"><span class="card__time">40 min</span><span class="card__price">$30</span></div>
+            <a class="link-arrow" href="#reserva" data-pick-service="fade">Reservar</a>
+          </div>
+          <div class="guard" aria-label="Escala de peines de máquina, de 0,5 a 13 milímetros">
+            <div class="guard__bars">
+              <span style="--h:.06"><i>0,5</i></span>
+              <span style="--h:.13"><i>1,5</i></span>
+              <span style="--h:.25"><i>3</i></span>
+              <span style="--h:.36"><i>4,5</i></span>
+              <span style="--h:.48"><i>6</i></span>
+              <span style="--h:.77"><i>10</i></span>
+              <span style="--h:1"><i>13 mm</i></span>
+            </div>
+            <div class="guard__labels"><span>#0</span><span>#½</span><span>#1</span><span>#1½</span><span>#2</span><span>#3</span><span>#4</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-reveal>
+          <div class="card__figure" aria-hidden="true"><span class="figure-num">45</span><span class="figure-unit">°C</span></div>
+          <div class="card__body">
+            <h3>Barba Escultural</h3>
+            <p>Perfilado a navaja, toalla caliente y aceite de acabado.</p>
+            <div class="card__meta"><span class="card__time">30 min</span><span class="card__price">$22</span></div>
+            <a class="link-arrow" href="#reserva" data-pick-service="barba">Reservar</a>
+          </div>
+        </article>
+
+        <article class="card" data-reveal>
+          <div class="card__figure card__figure--angle" aria-hidden="true">
+            <svg viewBox="0 0 120 70"><path class="angle-base" d="M8 62H112"/><path class="angle-ray" d="M8 62 101 8.3" pathLength="1"/><path class="angle-arc" d="M58 62A50 50 0 0 0 51.3 37" pathLength="1"/></svg>
+            <span class="figure-num">30°</span>
+          </div>
+          <div class="card__body">
+            <h3>Afeitado Clásico</h3>
+            <p>Espuma caliente, navaja y bálsamo. El ritual de siempre.</p>
+            <div class="card__meta"><span class="card__time">35 min</span><span class="card__price">$25</span></div>
+            <a class="link-arrow" href="#reserva" data-pick-service="afeitado">Reservar</a>
+          </div>
+        </article>
+
+        <article class="card" data-reveal>
+          <div class="swatches" aria-hidden="true">
+            <span style="--c:#101013"></span><span style="--c:#2b1d15"></span><span style="--c:#4a3021"></span><span style="--c:#6e4b30"></span><span style="--c:#8f6d48"></span><span style="--c:#b9bcc1"></span>
+          </div>
+          <div class="card__body">
+            <h3>Color &amp; Canas</h3>
+            <p>Camuflaje de canas o color completo con acabado natural.</p>
+            <div class="card__meta"><span class="card__time">50 min</span><span class="card__price">$40</span></div>
+            <a class="link-arrow" href="#reserva" data-pick-service="color">Reservar</a>
+          </div>
+        </article>
+
+        <article class="card" data-reveal>
+          <div class="card__figure" aria-hidden="true"><span class="figure-num">≤12</span><span class="figure-unit">años</span></div>
+          <div class="card__body">
+            <h3>Corte Niños</h3>
+            <p>Para los caballeros del mañana, con toda la paciencia del mundo.</p>
+            <div class="card__meta"><span class="card__time">30 min</span><span class="card__price">$20</span></div>
+            <a class="link-arrow" href="#reserva" data-pick-service="ninos">Reservar</a>
+          </div>
+        </article>
+
+        <article class="card card--wide card--featured" data-reveal>
+          <div class="card__body">
+            <p class="card__tag">Experiencia completa</p>
+            <h3>Ritual Grafito</h3>
+            <p>Corte Signature, barba escultural, mascarilla facial y bebida de cortesía.</p>
+            <div class="card__meta"><span class="card__time">90 min</span><span class="card__price">$65</span></div>
+            <a class="link-arrow" href="#reserva" data-pick-service="ritual">Reservar</a>
+          </div>
+          <div class="timeline" aria-label="Reparto del tiempo: corte 45 minutos, barba 25, mascarilla 15, bebida 5">
+            <div class="timeline__bar">
+              <span style="--w:45"></span><span style="--w:25"></span><span style="--w:15"></span><span style="--w:5"></span>
+            </div>
+            <div class="timeline__labels">
+              <span>Corte 45′</span><span>Barba 25′</span><span>Mascarilla 15′</span><span>Bebida 5′</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- RITUAL -->
+  <section class="ritual" id="ritual" aria-labelledby="ritual-title">
+    <div class="ritual__sticky">
+      <header class="container section-head ritual__head">
+        <p class="eyebrow">El ritual</p>
+        <h2 class="display" id="ritual-title">Cinco pasos. <span class="text-muted">Cero improvisación.</span></h2>
+      </header>
+      <div class="ritual__viewport">
+        <ol class="ritual__track">
+          <li class="step">
+            <div class="step__top"><span class="step__num">01</span><span class="step__time">5 min</span></div>
+            <svg class="step__icon step__icon--scan" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8V3h5M16 3h5v5M21 16v5h-5M8 21H3v-5"/><ellipse cx="12" cy="11.5" rx="4.6" ry="6"/><path class="scan-line" d="M5.5 12h13"/></svg>
+            <h3>Diagnóstico</h3>
+            <p>Analizamos tu tipo de cabello, la forma de tu rostro y cómo te peinas cada día.</p>
+          </li>
+          <li class="step">
+            <div class="step__top"><span class="step__num">02</span><span class="step__time">5 min</span></div>
+            <svg class="step__icon step__icon--wave" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 8c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2 2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/><path d="M0 12.5c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2 2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/><path d="M0 17c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2 2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/></svg>
+            <h3>Lavado</h3>
+            <p>Champú y masaje capilar con agua a temperatura controlada.</p>
+          </li>
+          <li class="step">
+            <div class="step__top"><span class="step__num">03</span><span class="step__time">25 min</span></div>
+            <svg class="step__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg>
+            <h3>Corte</h3>
+            <p>Tijera y máquina en manos expertas. Cada línea tiene una intención.</p>
+          </li>
+          <li class="step">
+            <div class="step__top"><span class="step__num">04</span><span class="step__time">5 min</span></div>
+            <svg class="step__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 14.5h10.5V10c-4 0-8.5 1.5-10.5 4.5z"/><path d="M13 12.3l8.5-3"/><circle cx="13" cy="12.2" r=".7"/></svg>
+            <h3>Detalle</h3>
+            <p>Perfilado a navaja de nuca y patillas. Toalla caliente para cerrar.</p>
+          </li>
+          <li class="step">
+            <div class="step__top"><span class="step__num">05</span><span class="step__time">5 min</span></div>
+            <svg class="step__icon step__icon--spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7z"/><path d="M19 15.5c.3 1.6.9 2.2 2.5 2.5-1.6.3-2.2.9-2.5 2.5-.3-1.6-.9-2.2-2.5-2.5 1.6-.3 2.2-.9 2.5-2.5z"/></svg>
+            <h3>Acabado</h3>
+            <p>Styling con producto profesional y una rutina para mantenerlo en casa.</p>
+          </li>
+        </ol>
+      </div>
+      <div class="container"><div class="ritual__bar" aria-hidden="true"><span></span></div></div>
+    </div>
+  </section>
+
+  <!-- EQUIPO -->
+  <section class="team section" id="equipo" aria-labelledby="team-title">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="eyebrow">El equipo</p>
+        <h2 class="display" id="team-title">Manos expertas. <span class="serif">Criterio propio.</span></h2>
+        <p class="lead">Cuatro barberos con estilos distintos y un mismo estándar. Elige al tuyo o deja que te recomendemos.</p>
+      </header>
+      <div class="team__grid" data-stagger>
+        <article class="barber" style="--cx:28%;--cy:22%">
+          <div class="barber__portrait" aria-hidden="true"><span class="barber__initials">AM</span></div>
+          <div class="barber__info">
+            <p class="barber__role">Fundador · Master Barber</p>
+            <h3>Andrés Molina</h3>
+            <p class="barber__spec">Fades y diseño · 14 años</p>
+            <a class="link-arrow" href="#reserva" data-pick-barber="andres">Reservar con Andrés</a>
+          </div>
+        </article>
+        <article class="barber" style="--cx:72%;--cy:30%">
+          <div class="barber__portrait" aria-hidden="true"><span class="barber__initials">DR</span></div>
+          <div class="barber__info">
+            <p class="barber__role">Senior Barber</p>
+            <h3>Diego Ramírez</h3>
+            <p class="barber__spec">Barbas y afeitado clásico · 9 años</p>
+            <a class="link-arrow" href="#reserva" data-pick-barber="diego">Reservar con Diego</a>
+          </div>
+        </article>
+        <article class="barber" style="--cx:40%;--cy:70%">
+          <div class="barber__portrait" aria-hidden="true"><span class="barber__initials">SH</span></div>
+          <div class="barber__info">
+            <p class="barber__role">Stylist</p>
+            <h3>Sofía Herrera</h3>
+            <p class="barber__spec">Texturas y color · 7 años</p>
+            <a class="link-arrow" href="#reserva" data-pick-barber="sofia">Reservar con Sofía</a>
+          </div>
+        </article>
+        <article class="barber" style="--cx:66%;--cy:78%">
+          <div class="barber__portrait" aria-hidden="true"><span class="barber__initials">MV</span></div>
+          <div class="barber__info">
+            <p class="barber__role">Barber</p>
+            <h3>Mateo Vargas</h3>
+            <p class="barber__spec">Cortes clásicos y niños · 4 años</p>
+            <a class="link-arrow" href="#reserva" data-pick-barber="mateo">Reservar con Mateo</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEÑAS -->
+  <section class="reviews section" aria-labelledby="reviews-title">
+    <header class="container section-head section-head--center" data-reveal>
+      <p class="eyebrow">Reseñas de ejemplo</p>
+      <h2 class="display" id="reviews-title">4,9 de 5.<br><span class="text-muted">En 1.240 reseñas.</span></h2>
+    </header>
+    <div class="marquee" data-dir="left">
+      <ul class="marquee__track">
+        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“El mejor fade que me han hecho. Salí sin una sola línea marcada.”</blockquote><p class="review__who"><strong>Carlos M.</strong> · Fade de Precisión</p></li>
+        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“Puntuales, limpios y con un trato impecable. Ya no voy a otro sitio.”</blockquote><p class="review__who"><strong>Javier R.</strong> · Corte Signature</p></li>
+        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“El afeitado con toalla caliente es otra liga. Vale cada minuto.”</blockquote><p class="review__who"><strong>Andrés P.</strong> · Afeitado Clásico</p></li>
+        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“Sofía entendió lo que quería sin que le enseñara una sola foto.”</blockquote><p class="review__who"><strong>Daniel G.</strong> · Corte Signature</p></li>
+        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“Reservé en dos minutos y me atendieron a la hora exacta.”</blockquote><p class="review__who"><strong>Miguel A.</strong> · Barba Escultural</p></li>
+      </ul>
+    </div>
+    <div class="marquee" data-dir="right">
+      <ul class="marquee__track">
+        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“Llevo a mi hijo desde los 5 años. Paciencia infinita y cortes de diez.”</blockquote><p class="review__who"><strong>Laura V.</strong> · Corte Niños</p></li>
+        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“El Ritual Grafito es mi regalo de fin de mes. Salgo nuevo.”</blockquote><p class="review__who"><strong>Sebastián T.</strong> · Ritual Grafito</p></li>
+        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“Por fin una barbería donde te explican qué te van a hacer y por qué.”</blockquote><p class="review__who"><strong>Felipe C.</strong> · Corte Signature</p></li>
+        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“Me cubrieron las canas y nadie lo nota. Natural de verdad.”</blockquote><p class="review__who"><strong>Ricardo S.</strong> · Color &amp; Canas</p></li>
+        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“Buen ambiente, buena música y el mejor café del barrio.”</blockquote><p class="review__who"><strong>Tomás L.</strong> · Ritual Grafito</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CLUB -->
+  <section class="club section" id="club" aria-labelledby="club-title">
+    <div class="container">
+      <header class="section-head section-head--center" data-reveal>
+        <p class="eyebrow">Club Grafito</p>
+        <h2 class="display" id="club-title">Siempre impecable. <span class="serif text-brass">Cada mes.</span></h2>
+        <p class="lead">Una cuota fija, reservas prioritarias y tu barbero de confianza a un mensaje de distancia.</p>
+        <div class="billing" role="group" aria-label="Periodo de pago">
+          <span class="billing__thumb" aria-hidden="true"></span>
+          <button type="button" data-billing="monthly" aria-pressed="true">Mensual</button>
+          <button type="button" data-billing="annual" aria-pressed="false">Anual <em>2 meses gratis</em></button>
+        </div>
+      </header>
+      <div class="plans" data-stagger>
+        <article class="plan">
+          <header class="plan__head"><h3>Esencial</h3><p>Para llevar el corte siempre al día.</p></header>
+          <p class="plan__price"><span class="plan__cur">$</span><span data-price data-monthly="49" data-annual="41">49</span><span class="plan__per">/mes</span></p>
+          <p class="plan__note" data-note-monthly="Pago mensual. Cancela cuando quieras." data-note-annual="Un solo pago de $490 al año.">Pago mensual. Cancela cuando quieras.</p>
+          <ul class="plan__list"><li>2 cortes al mes</li><li>Reserva prioritaria</li><li>10% en productos</li></ul>
+          <a class="btn btn--ghost btn--block" href="#reserva" data-plan="Esencial">Unirme al Club</a>
+        </article>
+        <article class="plan plan--featured">
+          <span class="plan__badge">Recomendado</span>
+          <header class="plan__head"><h3>Pro</h3><p>Corte y barba impecables todo el mes.</p></header>
+          <p class="plan__price"><span class="plan__cur">$</span><span data-price data-monthly="79" data-annual="66">79</span><span class="plan__per">/mes</span></p>
+          <p class="plan__note" data-note-monthly="Pago mensual. Cancela cuando quieras." data-note-annual="Un solo pago de $790 al año.">Pago mensual. Cancela cuando quieras.</p>
+          <ul class="plan__list"><li>4 cortes al mes</li><li>2 arreglos de barba</li><li>15% en productos</li><li>Bebida de cortesía</li></ul>
+          <a class="btn btn--brass btn--block" href="#reserva" data-plan="Pro">Unirme al Club</a>
+        </article>
+        <article class="plan">
+          <header class="plan__head"><h3>Black</h3><p>Sin límites, para quien no negocia su imagen.</p></header>
+          <p class="plan__price"><span class="plan__cur">$</span><span data-price data-monthly="129" data-annual="108">129</span><span class="plan__per">/mes</span></p>
+          <p class="plan__note" data-note-monthly="Pago mensual. Cancela cuando quieras." data-note-annual="Un solo pago de $1.290 al año.">Pago mensual. Cancela cuando quieras.</p>
+          <ul class="plan__list"><li>Cortes y barba ilimitados</li><li>1 Ritual Grafito al mes</li><li>20% en productos</li><li>Barbero asignado y horario preferente</li></ul>
+          <a class="btn btn--ghost btn--block" href="#reserva" data-plan="Black">Unirme al Club</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVA -->
+  <section class="booking section" id="reserva" aria-labelledby="booking-title">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="eyebrow">Reservas</p>
+        <h2 class="display" id="booking-title">Tu próximo corte empieza <span class="serif text-brass">aquí.</span></h2>
+        <p class="lead">Elige servicio, barbero y hora. Te confirmamos por WhatsApp en minutos.</p>
+      </header>
+      <form class="booker" id="booker" novalidate data-reveal>
+        <div class="booker__steps">
+          <fieldset class="booker__group">
+            <legend><span class="booker__n">1</span>Servicio</legend>
+            <div class="chips" id="bk-services"></div>
+          </fieldset>
+          <fieldset class="booker__group">
+            <legend><span class="booker__n">2</span>Barbero</legend>
+            <div class="chips" id="bk-barbers"></div>
+          </fieldset>
+          <fieldset class="booker__group">
+            <legend><span class="booker__n">3</span>Día</legend>
+            <div class="days" id="bk-days"></div>
+          </fieldset>
+          <fieldset class="booker__group">
+            <legend><span class="booker__n">4</span>Hora</legend>
+            <div class="slots" id="bk-slots"></div>
+            <p class="booker__hint" id="bk-slots-hint">Elige un día para ver las horas libres.</p>
+          </fieldset>
+          <div class="booker__group">
+            <label class="booker__label" for="bk-name"><span class="booker__n">5</span>Tu nombre</label>
+            <input class="input" id="bk-name" name="name" type="text" autocomplete="given-name" placeholder="¿Cómo te llamamos?" maxlength="40">
+          </div>
+        </div>
+        <aside class="summary">
+          <div class="summary__view" id="bk-summary">
+            <p class="eyebrow">Tu reserva</p>
+            <dl class="summary__list">
+              <div><dt>Servicio</dt><dd id="sum-service">—</dd></div>
+              <div><dt>Barbero</dt><dd id="sum-barber">—</dd></div>
+              <div><dt>Día</dt><dd id="sum-day">—</dd></div>
+              <div><dt>Hora</dt><dd id="sum-time">—</dd></div>
+            </dl>
+            <div class="summary__total"><span>Total</span><strong id="sum-total">$0</strong></div>
+            <p class="summary__error" id="bk-error" role="alert"></p>
+            <button type="submit" class="btn btn--brass btn--block">Confirmar reserva</button>
+            <p class="summary__note">Pagas en el estudio. Puedes cambiar o cancelar tu cita hasta 2 horas antes.</p>
+          </div>
+          <div class="summary__done" id="bk-done" hidden>
+            <svg class="done-check" viewBox="0 0 52 52" aria-hidden="true"><path d="M50 26a24 24 0 1 1-48 0 24 24 0 1 1 48 0" pathLength="1"/><path d="M15 27l7 7 15-16" pathLength="1"/></svg>
+            <h3 id="done-title">Todo listo.</h3>
+            <p id="done-text">Envíanos la solicitud por WhatsApp y te confirmamos la cita en minutos.</p>
+            <a class="btn btn--brass btn--block" id="bk-whatsapp" href="#reserva" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+            <button type="button" class="btn btn--ghost btn--block" id="bk-edit">Editar reserva</button>
+          </div>
+        </aside>
+      </form>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN -->
+  <section class="visit section" id="visitanos" aria-labelledby="visit-title">
+    <div class="container visit__grid">
+      <div class="map" data-reveal aria-hidden="true">
+        <svg class="map__roads" viewBox="0 0 600 480" preserveAspectRatio="xMidYMid slice">
+          <path class="road road--river" d="M-20 450C150 410 260 480 420 430S600 390 620 410"/>
+          <rect class="road--park" x="352" y="262" width="120" height="82" rx="8"/>
+          <path class="road" d="M-20 100 620 50"/>
+          <path class="road" d="M60 -20 120 500"/>
+          <path class="road" d="M470 -20 530 500"/>
+          <path class="road road--main" d="M-20 330 620 150"/>
+          <path class="road road--main" d="M262 -20 338 500"/>
+          <path class="road road--route" d="M90 500C150 420 230 330 300 240" pathLength="1"/>
+          <g transform="translate(300 240)">
+            <circle class="pin__pulse" r="10"/>
+            <circle class="pin__pulse" r="10"/>
+            <circle class="pin__dot" r="7"/>
+          </g>
+        </svg>
+        <div class="map__card"><strong>Grafito</strong><span>Av. Principal 1450</span></div>
+      </div>
+      <div class="visit__info" data-reveal>
+        <p class="eyebrow">Visítanos</p>
+        <h2 class="display display--sm" id="visit-title">En el centro de todo.</h2>
+        <address class="visit__address">Av. Principal 1450, local 3<br>Centro</address>
+        <p class="status" id="open-status"><span class="status__dot" aria-hidden="true"></span><span class="status__text">Abierto los 7 días</span></p>
+        <ul class="hours" id="hours">
+          <li data-day="1"><span>Lunes</span><span>10:00 – 21:00</span></li>
+          <li data-day="2"><span>Martes</span><span>10:00 – 21:00</span></li>
+          <li data-day="3"><span>Miércoles</span><span>10:00 – 21:00</span></li>
+          <li data-day="4"><span>Jueves</span><span>10:00 – 21:00</span></li>
+          <li data-day="5"><span>Viernes</span><span>10:00 – 21:00</span></li>
+          <li data-day="6"><span>Sábado</span><span>09:00 – 20:00</span></li>
+          <li data-day="0"><span>Domingo</span><span>10:00 – 15:00</span></li>
+        </ul>
+        <div class="visit__actions">
+          <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Principal%201450" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Cómo llegar</a>
+          <a class="btn btn--ghost" href="#reserva" data-whatsapp target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
+        </div>
+        <p class="visit__contact"><span>+1 555 014 2014</span><span>hola@grafito.example</span></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__cta" data-reveal>
+      <h2 class="display">¿Listo para tu <span class="serif text-brass">mejor versión?</span></h2>
+      <a href="#reserva" class="btn btn--brass btn--lg magnetic">Reserva tu cita</a>
+    </div>
+    <div class="footer__cols">
+      <div class="footer__brand">
+        <a href="#top" class="brand" aria-label="Grafito Barber Studio, volver arriba">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2.6 27.6 9.3v13.4L16 29.4 4.4 22.7V9.3z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10.2 20.8 21.8 11.2" stroke="#d6a35c" stroke-width="2" stroke-linecap="round"/></svg>
+          <span class="brand__word">GRAFITO</span>
+        </a>
+        <p>Barbería de precisión desde 2014. Cortes, barba y rituales en un estudio diseñado al milímetro.</p>
+        <div class="footer__social">
+          <a href="#top" aria-label="Instagram"><svg aria-hidden="true"><use href="#i-instagram"/></svg></a>
+          <a href="#reserva" aria-label="WhatsApp" data-whatsapp target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-chat"/></svg></a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Principal%201450" aria-label="Google Maps" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg></a>
+        </div>
+      </div>
+      <nav class="footer__col" aria-label="Estudio">
+        <h3>Estudio</h3>
+        <ul><li><a href="#estudio">Manifiesto</a></li><li><a href="#ritual">El ritual</a></li><li><a href="#equipo">Equipo</a></li><li><a href="#club">Club Grafito</a></li></ul>
+      </nav>
+      <nav class="footer__col" aria-label="Servicios">
+        <h3>Servicios</h3>
+        <ul><li><a href="#servicios">Corte Signature</a></li><li><a href="#servicios">Fade de Precisión</a></li><li><a href="#servicios">Barba y afeitado</a></li><li><a href="#servicios">Ritual Grafito</a></li></ul>
+      </nav>
+      <div class="footer__col">
+        <h3>Horario</h3>
+        <ul><li>Lun – Vie · 10:00 – 21:00</li><li>Sáb · 09:00 – 20:00</li><li>Dom · 10:00 – 15:00</li></ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <p>© <span id="year">2026</span> Grafito Barber Studio. Todos los derechos reservados.</p>
+      <p class="footer__links"><a href="#top">Privacidad</a><a href="#top">Términos</a></p>
+    </div>
+  </div>
+  <div class="footer__word" aria-hidden="true">GRAFITO</div>
+</footer>
+
+<p class="demo-pill" role="note"><span class="demo-pill__dot" aria-hidden="true"></span>Demo ·&nbsp;<span class="demo-pill__long">textos, precios y reseñas</span><span class="demo-pill__short">contenido</span>&nbsp;de ejemplo</p>
+</body>
+</html>
