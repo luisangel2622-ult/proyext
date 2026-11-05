@@ -20,16 +20,27 @@ Sitio de **Don Morell**, barbería de caballeros en Plaza Marfil, Tuxtla Gutiér
 
 **Logo.** Está vectorizado en `assets/img/logo-don-morell.svg`, con las letras reconstruidas en Cinzel (de la misma familia romana que el original). Así se ve nítido a cualquier tamaño. También se generaron el favicon, el icono para iPhone y la imagen para compartir en redes.
 
+**Atmósfera «Veta Noble».** Los fondos no son colores planos sino lugares:
+- **Toda la página:** una losa de mármol continua y sin costuras (marfil en modo claro, Nero Marquina en oscuro), con grano de piedra.
+- **Luz por sección:** lámpara cálida en modo oscuro, luz de ventana en modo claro.
+- **La navaja:** flota sobre un damero de mármol en perspectiva, como el piso de una barbería clásica.
+- **Reservas:** van sobre capitoné de cuero, como un sillón de barbero.
+- **Grabado guilloché:** en el manifiesto, las bandas del horario y el footer.
+
+La filosofía visual está en `docs/filosofia-visual.md` y la lámina de materiales en `docs/veta-noble-lamina.png`. Las texturas se regeneran con `python3 tools/gen_materials.py assets/img`.
+
 Funciona en móvil, tableta y escritorio. Se puede usar con teclado y lector de pantalla, respeta la opción «reducir movimiento» y muestra todo el contenido aunque JavaScript esté desactivado.
 
 ## Estructura
 
 ```
-index.html
+index.html · manifest.webmanifest
 assets/
-  css/  base.css · hero.css · sections.css · booking.css
-  js/   config.js · main.js · hero-canvas.js · booking.js
-  img/  logo-don-morell.svg · favicon.svg · apple-touch-icon.png · og-don-morell.png
+  css/  base.css · hero.css · sections.css · booking.css · atmosphere.css · mobile.css
+  js/   config.js · main.js · hero-canvas.js · booking.js · ornaments.js
+  img/  logo, iconos y texturas (mármol, damero, capitoné, grano)
+docs/   filosofía visual y lámina de materiales
+tools/  generador de texturas
 ```
 
 ## Verla en tu computador

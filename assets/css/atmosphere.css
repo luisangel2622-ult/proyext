@@ -1,0 +1,233 @@
+/* ==========================================================================
+   Atmósfera «Veta Noble»: los fondos de la web como lugares.
+   Mármol continuo + grano de piedra en toda la página, y por sección:
+   luz (lámpara en oscuro, ventana en claro), damero, capitoné y guilloché.
+   Todos los valores vienen de los tokens de tema de base.css.
+   ========================================================================== */
+
+/* ---------- Losa de mármol continua (scroll con el contenido) ---------- */
+body {
+  background-color: var(--bg);
+  background-image: linear-gradient(var(--marble-veil), var(--marble-veil)), var(--marble);
+  background-size: auto, var(--marble-size);
+  background-repeat: repeat;
+}
+
+/* Grano de piedra sobre todo (no intercepta toques) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background-image: url("../img/grain.png");
+  background-size: 160px 160px;
+  opacity: var(--grain-o);
+  pointer-events: none;
+}
+
+/* Protección de lectura detrás de los encabezados */
+.section-head { position: relative; isolation: isolate; }
+.section-head::before {
+  content: "";
+  position: absolute;
+  inset: -48px max(-72px, calc(var(--gutter) * -1));
+  z-index: -1;
+  background: radial-gradient(closest-side, var(--scrim), transparent);
+  pointer-events: none;
+}
+
+/* Capa de luz reutilizable */
+.atmo { position: relative; isolation: isolate; }
+.atmo::before, .atmo::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+
+/* ---------- Portada ---------- */
+.hero__veil {
+  background:
+    radial-gradient(ellipse 44% 40% at 50% 44%, var(--veil-center) 0%, var(--veil-mid) 55%, transparent 100%),
+    radial-gradient(ellipse 60% 45% at 50% -8%, var(--lamp), transparent 70%),
+    repeating-linear-gradient(112deg, transparent 0 7%, var(--window) 9% 15%, transparent 17% 24%),
+    radial-gradient(ellipse 70% 42% at 50% 118%, var(--accent-glow), transparent 70%),
+    radial-gradient(ellipse 120% 90% at 50% 50%, transparent 55%, var(--shade) 100%);
+  -webkit-mask-image: linear-gradient(180deg, #000 86%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 86%, transparent 100%);
+}
+.hero::after {
+  /* la ventana solo entra por la esquina superior izquierda */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: repeating-linear-gradient(112deg, transparent 0 60px, var(--window) 80px 150px, transparent 170px 260px);
+  -webkit-mask-image: radial-gradient(ellipse 60% 70% at 8% 0%, #000 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse 60% 70% at 8% 0%, #000 0%, transparent 70%);
+}
+
+/* ---------- El estudio: roseta de guilloché y luz lateral ---------- */
+.statement__sticky { isolation: isolate; overflow: hidden; }
+.statement__sticky::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 60% at 88% 50%, var(--lamp-soft), transparent 70%),
+    radial-gradient(ellipse 70% 60% at 30% 50%, var(--scrim), transparent 75%),
+    radial-gradient(ellipse 130% 100% at 50% 50%, transparent 60%, var(--shade) 100%);
+}
+.statement__rosette {
+  position: absolute;
+  top: 50%;
+  right: max(-30vmin, -260px);
+  z-index: -1;
+  width: min(92vmin, 880px);
+  height: min(92vmin, 880px);
+  opacity: 0.42;
+  transform: translateY(-50%);
+  pointer-events: none;
+  animation: slow-turn 240s linear infinite;
+}
+@keyframes slow-turn { to { transform: translateY(-50%) rotate(360deg); } }
+
+/* ---------- Navaja: damero en perspectiva y foco desde arriba ---------- */
+.razor__sticky { isolation: isolate; }
+.razor__sticky::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 36% 55% at 50% 0%, var(--lamp), transparent 75%),
+    linear-gradient(180deg, var(--marble-veil) 0%, transparent 40%),
+    radial-gradient(ellipse 120% 90% at 50% 40%, transparent 50%, var(--shade) 100%);
+}
+.razor__floor {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: -2;
+  width: max(200%, 1600px);
+  height: 150%;
+  background-image: var(--floor);
+  background-size: 360px 360px;
+  background-position: 50% 100%;
+  opacity: var(--floor-o);
+  transform: translateX(-50%) perspective(900px) rotateX(58deg);
+  transform-origin: 50% 100%;
+  -webkit-mask-image: radial-gradient(ellipse 30% 62% at 50% 100%, #000 18%, transparent 72%), linear-gradient(to top, transparent 0, #000 14%);
+  -webkit-mask-composite: source-in;
+  mask-image: radial-gradient(ellipse 30% 62% at 50% 100%, #000 18%, transparent 72%), linear-gradient(to top, transparent 0, #000 14%);
+  mask-composite: intersect;
+  pointer-events: none;
+}
+.razor__floor::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 22% 42% at 50% 62%, var(--spot), transparent 75%),
+    linear-gradient(180deg, var(--bg) 0%, transparent 55%);
+}
+
+/* Las luces de cada escena se desvanecen en sus bordes: sin costuras entre secciones */
+.statement__sticky::before,
+.razor__sticky::before,
+.ritual__sticky::before,
+.services.atmo::before,
+.social.atmo::before,
+.visit.atmo::before {
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+}
+
+/* ---------- Horario en breve: bandas de guilloché ---------- */
+.facts__frame { position: relative; }
+.facts__grid { border-block-color: transparent; }
+.facts__band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 18px;
+  width: 100%;
+  pointer-events: none;
+}
+.facts__band--top { top: -9px; }
+.facts__band--bottom { bottom: -9px; }
+
+/* ---------- Servicios: luz lateral sobre la losa ---------- */
+.services.atmo::before {
+  background:
+    radial-gradient(ellipse 45% 40% at 0% 30%, var(--lamp-soft), transparent 70%),
+    radial-gradient(ellipse 45% 40% at 100% 75%, var(--lamp-soft), transparent 70%),
+    repeating-linear-gradient(112deg, transparent 0 120px, var(--window) 150px 230px, transparent 260px 400px);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+/* ---------- Ritual: franjas de luz entre las tarjetas ---------- */
+.ritual__sticky { isolation: isolate; }
+.ritual.is-scrubbed .ritual__sticky::before,
+.ritual__sticky::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 40% at 50% 62%, var(--lamp-soft), transparent 70%),
+    repeating-linear-gradient(100deg, transparent 0 90px, var(--window) 110px 170px, transparent 190px 300px),
+    radial-gradient(ellipse 130% 100% at 50% 50%, transparent 60%, var(--shade) 100%);
+}
+
+/* ---------- Reservas: capitoné de cuero ---------- */
+.booking { background: none; }
+.booking.atmo::before {
+  background-image:
+    linear-gradient(180deg, var(--bg) 0%, transparent 16%, transparent 84%, var(--bg) 100%),
+    radial-gradient(ellipse 80% 70% at 50% 45%, transparent 30%, var(--shade) 100%),
+    var(--leather);
+  background-size: auto, auto, var(--leather-size);
+  opacity: var(--leather-o);
+}
+
+/* ---------- Ubicación y redes ---------- */
+.visit.atmo::before {
+  background: radial-gradient(ellipse 50% 50% at 25% 50%, var(--lamp-soft), transparent 70%);
+}
+.social { background: none; }
+.social.atmo::before {
+  background:
+    radial-gradient(ellipse 50% 60% at 50% 30%, var(--lamp), transparent 70%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, transparent 55%, var(--shade) 100%);
+}
+
+/* ---------- Footer: roseta tras la medalla ---------- */
+.footer {
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, var(--accent-soft), transparent 70%),
+    radial-gradient(ellipse 120% 80% at 50% 100%, var(--shade), transparent 70%);
+}
+.footer__cta { position: relative; isolation: isolate; }
+.footer__rosette {
+  position: absolute;
+  top: calc(52px - min(43vw, 180px));
+  left: 50%;
+  z-index: -1;
+  width: min(86vw, 360px);
+  height: min(86vw, 360px);
+  opacity: 0.6;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* ---------- Tarjetas: piezas pulidas sobre la piedra ---------- */
+.card, .step, .booker__group, .summary, .visit__info, .social-card {
+  box-shadow: inset 0 0 0 1px var(--line), inset 0 1px 0 var(--edge-hi), var(--shadow-card);
+}
+.card--featured { box-shadow: inset 0 0 0 1px var(--accent-line), inset 0 1px 0 var(--edge-hi), 0 40px 80px -50px var(--accent-glow); }
+
+@media (prefers-reduced-motion: reduce) {
+  .statement__rosette { animation: none; }
+}

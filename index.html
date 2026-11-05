@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="assets/css/hero.css">
 <link rel="stylesheet" href="assets/css/sections.css">
 <link rel="stylesheet" href="assets/css/booking.css">
+<link rel="stylesheet" href="assets/css/atmosphere.css">
 <link rel="stylesheet" href="assets/css/mobile.css">
 <script>
   (function () {
@@ -39,6 +40,7 @@
 <script src="assets/js/hero-canvas.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 <script src="assets/js/booking.js" defer></script>
+<script src="assets/js/ornaments.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -150,6 +152,7 @@
   <!-- MANIFIESTO -->
   <section class="statement" id="estudio" aria-label="El estudio">
     <div class="statement__sticky">
+      <canvas class="statement__rosette" data-guilloche="rosette" aria-hidden="true"></canvas>
       <div class="container">
         <p class="eyebrow">El estudio</p>
         <p class="statement__text" data-words>En Don Morell, cada corte empieza con una <em>conversación.</em> Escuchamos lo que buscas, cuidamos cada detalle y trabajamos sin prisas. Tradición de barbería, con la <em>precisión</em> que mereces.</p>
@@ -165,6 +168,7 @@
         <h2 class="display" id="razor-title">Afilada para la <span class="serif">perfección.</span></h2>
       </header>
       <div class="razor__stage">
+        <div class="razor__floor" aria-hidden="true"></div>
         <div class="razor__halo" aria-hidden="true"></div>
         <svg class="razor__svg" viewBox="-480 -260 960 520" role="img" aria-label="Navaja de barbero que se abre al desplazarte">
           <defs>
@@ -228,17 +232,21 @@
   <!-- HORARIO EN BREVE -->
   <section class="facts" aria-label="Horario y ubicación">
     <div class="container">
+      <div class="facts__frame">
+      <canvas class="facts__band facts__band--top" data-guilloche="band" aria-hidden="true"></canvas>
       <dl class="facts__grid" data-stagger>
-        <div class="fact"><dt>Lunes a viernes</dt><dd>10:30 a.m. – 8:30 p.m.</dd></div>
-        <div class="fact"><dt>Sábado</dt><dd>9:00 a.m. – 8:00 p.m.</dd></div>
+        <div class="fact"><dt>Lunes a viernes</dt><dd><span class="nowrap">10:30 a.m.</span> – <span class="nowrap">8:30 p.m.</span></dd></div>
+        <div class="fact"><dt>Sábado</dt><dd><span class="nowrap">9:00 a.m.</span> – <span class="nowrap">8:00 p.m.</span></dd></div>
         <div class="fact"><dt>Domingo</dt><dd>Cerrado</dd></div>
         <div class="fact"><dt>Plaza Marfil</dt><dd>Local 9 · Tuxtla</dd></div>
       </dl>
+      <canvas class="facts__band facts__band--bottom" data-guilloche="band" aria-hidden="true"></canvas>
+      </div>
     </div>
   </section>
 
   <!-- SERVICIOS -->
-  <section class="services section" id="servicios" aria-labelledby="services-title">
+  <section class="services section atmo" id="servicios" aria-labelledby="services-title">
     <div class="container">
       <header class="section-head" data-reveal>
         <p class="eyebrow">Servicios</p>
@@ -392,7 +400,7 @@
   </section>
 
   <!-- RESERVA -->
-  <section class="booking section" id="reserva" aria-labelledby="booking-title">
+  <section class="booking section atmo" id="reserva" aria-labelledby="booking-title">
     <div class="container">
       <header class="section-head" data-reveal>
         <p class="eyebrow">Reservas</p>
@@ -461,7 +469,7 @@
   </section>
 
   <!-- UBICACIÓN -->
-  <section class="visit section" id="visitanos" aria-labelledby="visit-title">
+  <section class="visit section atmo" id="visitanos" aria-labelledby="visit-title">
     <div class="container visit__grid">
       <div class="map" data-reveal aria-hidden="true">
         <svg class="map__roads" viewBox="0 0 600 480" preserveAspectRatio="xMidYMid slice">
@@ -506,7 +514,7 @@
   </section>
 
   <!-- REDES -->
-  <section class="social section" aria-labelledby="social-title">
+  <section class="social section atmo" aria-labelledby="social-title">
     <div class="container">
       <header class="section-head section-head--center" data-reveal>
         <p class="eyebrow">Comunidad</p>
@@ -541,6 +549,7 @@
 <footer class="footer">
   <div class="container">
     <div class="footer__cta" data-reveal>
+      <canvas class="footer__rosette" data-guilloche="rosette" aria-hidden="true"></canvas>
       <svg class="footer__medal" viewBox="0 0 300 300" aria-hidden="true"><use href="#dm-logo"/></svg>
       <h2 class="display">¿Listo para tu <span class="serif">próximo corte?</span></h2>
       <a href="#reserva" class="btn btn--primary btn--lg magnetic">Reservar cita</a>

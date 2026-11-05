@@ -49,6 +49,11 @@ html.menu-open body { overflow: hidden; }
 }
 .guard__bars i { font-size: 0.6875rem; }
 
+/* ---------- Navaja en móvil: el damero queda bajo la navaja, no bajo los textos ---------- */
+@media (max-width: 760px) {
+  .razor__floor { bottom: 48%; height: 100%; }
+}
+
 /* ---------- Teléfonos estrechos (iPhone SE, Galaxy compactos) ---------- */
 @media (max-width: 380px) {
   :root { --fs-display: 2.125rem; }
@@ -115,6 +120,7 @@ html.menu-open body { overflow: hidden; }
   .razor__specs li, .razor__specs li:nth-child(n) { position: static; max-width: none; gap: 4px; text-align: left; justify-items: start; }
   .spec__value { font-size: 1.25rem; }
   .spec__label { font-size: 0.75rem; line-height: 1.3; }
+  .razor__floor { bottom: 36%; height: 130%; }
 
   /* Ritual: tarjetas a la altura disponible */
   .ritual.is-scrubbed .ritual__sticky { gap: 14px; padding-block: calc(env(safe-area-inset-top, 0px) + var(--nav-h) + 8px) 10px; }
