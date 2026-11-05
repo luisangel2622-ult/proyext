@@ -1,26 +1,35 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-MX">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Grafito Barber Studio</title>
+<title>Don Morell · Barbería en Tuxtla Gutiérrez</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Grafito Barber Studio: cortes de precisión, barba a navaja y el ritual completo de barbería en un estudio diseñado al milímetro. Reserva tu cita online.">
-<meta name="theme-color" content="#050607">
+<meta name="description" content="Don Morell, barbería de caballeros en Plaza Marfil, Tuxtla Gutiérrez. Corte, fade, barba y afeitado con navaja. Reserva tu cita en línea o por WhatsApp.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F5F2EB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B0B0C" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Grafito Barber Studio">
-<meta property="og:description" content="Tan preciso. Tan elegante. Tan tú. Reserva tu cita online.">
+<meta property="og:locale" content="es_MX">
+<meta property="og:title" content="Don Morell · Barbería en Tuxtla Gutiérrez">
+<meta property="og:description" content="Corte, barba y navaja con la elegancia de siempre. Reserva tu cita en Plaza Marfil.">
+<meta property="og:image" content="assets/img/og-don-morell.png">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/hero.css">
 <link rel="stylesheet" href="assets/css/sections.css">
 <link rel="stylesheet" href="assets/css/booking.css">
 <script>
-  document.documentElement.classList.add('js');
-  setTimeout(function () { if (!window.__grafitoReady) document.documentElement.classList.remove('js'); }, 2500);
+  (function () {
+    var d = document.documentElement;
+    d.classList.add('js');
+    try { var t = localStorage.getItem('dm-theme'); if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t); } catch (e) {}
+    setTimeout(function () { if (!window.__dmReady) d.classList.remove('js'); }, 2500);
+  })();
 </script>
 <script src="assets/js/config.js" defer></script>
 <script src="assets/js/hero-canvas.js" defer></script>
@@ -30,15 +39,22 @@
 {
   "@context": "https://schema.org",
   "@type": "BarberShop",
-  "name": "Grafito Barber Studio",
-  "description": "Barbería de precisión: cortes, barba a navaja y rituales completos.",
-  "telephone": "+1 555 014 2014",
-  "priceRange": "$$",
-  "address": { "@type": "PostalAddress", "streetAddress": "Av. Principal 1450, local 3", "addressLocality": "Centro" },
+  "name": "Don Morell",
+  "description": "Barbería de caballeros en Tuxtla Gutiérrez: corte, fade, barba y afeitado con navaja.",
+  "telephone": "+52 961 283 2818",
+  "image": "assets/img/logo-don-morell.svg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "16 Nte. Pte. 132, local 9, Plaza Marfil",
+    "addressLocality": "Tuxtla Gutiérrez",
+    "addressRegion": "Chiapas",
+    "postalCode": "29030",
+    "addressCountry": "MX"
+  },
+  "sameAs": ["https://www.instagram.com/donmorell_", "https://www.facebook.com/DonMorellBarber"],
   "openingHoursSpecification": [
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "10:00", "closes": "21:00" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "20:00" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "15:00" }
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "10:30", "closes": "20:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "20:00" }
   ]
 }
 </script>
@@ -47,34 +63,41 @@
 <a class="skip" href="#main">Saltar al contenido</a>
 
 <svg class="sprite" aria-hidden="true" focusable="false">
-  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></symbol>
-  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></g></symbol>
-  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="dm-wordmark" viewBox="0 0 259.8 29.48"><path style="fill: currentColor" d="M13.73 0.57Q18.06 0.57 21.32 2.33Q24.58 4.09 26.42 7.29Q28.26 10.49 28.26 14.74Q28.26 18.99 26.42 22.17Q24.58 25.35 21.32 27.13Q18.06 28.91 13.73 28.91H5.06L5.02 27.7Q5.02 27.7 5.89 27.7Q6.76 27.7 8.08 27.7Q9.39 27.7 10.69 27.7Q11.99 27.7 12.86 27.7Q13.73 27.7 13.73 27.7Q17.21 27.7 19.78 26.08Q22.35 24.46 23.79 21.54Q25.23 18.63 25.23 14.74Q25.23 10.85 23.79 7.94Q22.35 5.02 19.76 3.4Q17.17 1.78 13.73 1.78Q13.73 1.78 12.82 1.78Q11.9 1.78 10.55 1.78Q9.19 1.78 7.84 1.78Q6.48 1.78 5.55 1.78Q4.62 1.78 4.62 1.78V0.57ZM5.75 0.57V28.91H3.12V0.57ZM3.24 25.96V28.91H0V28.51Q0 28.51 0.26 28.51Q0.53 28.51 0.53 28.51Q1.58 28.51 2.33 27.76Q3.08 27.01 3.12 25.96ZM3.24 3.52H3.12Q3.12 2.47 2.35 1.72Q1.58 0.97 0.53 0.97Q0.53 0.97 0.28 0.97Q0.04 0.97 0.04 0.97L0 0.57H3.24ZM45.92 4.05Q48.75 4.05 51.24 4.96Q53.73 5.87 55.62 7.57Q57.5 9.27 58.55 11.6Q59.6 13.93 59.6 16.76Q59.6 19.6 58.55 21.93Q57.5 24.26 55.62 25.96Q53.73 27.66 51.24 28.57Q48.75 29.48 45.92 29.48Q43.08 29.48 40.61 28.57Q38.14 27.66 36.26 25.96Q34.38 24.26 33.33 21.93Q32.27 19.6 32.27 16.76Q32.27 13.93 33.33 11.6Q34.38 9.27 36.26 7.57Q38.14 5.87 40.61 4.96Q43.08 4.05 45.92 4.05ZM45.92 28.26Q48.91 28.26 51.34 26.81Q53.77 25.35 55.19 22.76Q56.61 20.17 56.61 16.76Q56.61 13.32 55.19 10.75Q53.77 8.18 51.34 6.72Q48.91 5.26 45.92 5.26Q42.96 5.26 40.53 6.72Q38.1 8.18 36.69 10.75Q35.27 13.32 35.27 16.76Q35.27 20.17 36.69 22.76Q38.1 25.35 40.53 26.81Q42.96 28.26 45.92 28.26ZM65.76 4.01 88.19 25.15 88.6 29.48 66.16 8.22ZM65.84 26.4V28.91H62.8V28.51Q62.8 28.51 63.15 28.51Q63.49 28.51 63.49 28.51Q64.42 28.51 65.07 27.9Q65.72 27.29 65.72 26.4ZM67.54 26.4Q67.54 27.29 68.21 27.9Q68.88 28.51 69.77 28.51Q69.77 28.51 70.11 28.51Q70.46 28.51 70.46 28.51V28.91H67.42V26.4ZM65.76 4.01 67.5 6.28 67.54 28.91H65.72V9.07Q65.72 7.01 65.54 5.51Q65.35 4.01 65.35 4.01ZM88.6 4.62V24.3Q88.6 25.59 88.68 26.79Q88.76 27.98 88.86 28.73Q88.96 29.48 88.96 29.48H88.6L86.82 27.33V4.62ZM88.48 7.13V4.62H91.51V5.02Q91.51 5.02 91.17 5.02Q90.82 5.02 90.82 5.02Q89.93 5.02 89.27 5.63Q88.6 6.24 88.6 7.13ZM86.82 7.13Q86.78 6.24 86.13 5.63Q85.48 5.02 84.55 5.02Q84.55 5.02 84.2 5.02Q83.86 5.02 83.86 5.02V4.62H86.9V7.13ZM133.06 0 133.38 2.71 123.22 25.35Q123.22 25.35 122.92 26.04Q122.61 26.73 122.29 27.68Q121.96 28.63 121.84 29.48H121.44L120.87 26.93ZM108.16 25.96V28.91H103.66V28.51Q103.7 28.51 104.01 28.51Q104.31 28.51 104.31 28.51Q105.4 28.51 106.25 27.84Q107.1 27.17 107.26 25.96ZM109.33 26.6Q109.33 26.64 109.33 26.68Q109.33 26.73 109.33 26.81Q109.33 27.45 109.8 28Q110.26 28.55 110.91 28.55H111.52V28.91H109.05V26.6ZM110.3 0H110.71L111.52 2.39L109.13 28.91H106.94ZM110.71 0 122.37 25.23 121.44 29.48 109.94 4.54ZM133.42 0 136.91 28.91H133.75L131.52 4.37L133.06 0ZM135.69 25.96H136.54Q136.74 27.17 137.59 27.84Q138.44 28.51 139.5 28.51Q139.5 28.51 139.82 28.51Q140.14 28.51 140.14 28.51V28.91H135.69ZM133.54 26.6H133.83V28.91H131.36V28.55H131.97Q132.65 28.55 133.1 28Q133.54 27.45 133.54 26.81Q133.54 26.73 133.54 26.68Q133.54 26.64 133.54 26.6ZM156.02 4.05Q158.85 4.05 161.34 4.96Q163.83 5.87 165.72 7.57Q167.6 9.27 168.65 11.6Q169.7 13.93 169.7 16.76Q169.7 19.6 168.65 21.93Q167.6 24.26 165.72 25.96Q163.83 27.66 161.34 28.57Q158.85 29.48 156.02 29.48Q153.18 29.48 150.71 28.57Q148.24 27.66 146.36 25.96Q144.48 24.26 143.42 21.93Q142.37 19.6 142.37 16.76Q142.37 13.93 143.42 11.6Q144.48 9.27 146.36 7.57Q148.24 5.87 150.71 4.96Q153.18 4.05 156.02 4.05ZM156.02 28.26Q159.01 28.26 161.44 26.81Q163.87 25.35 165.29 22.76Q166.71 20.17 166.71 16.76Q166.71 13.32 165.29 10.75Q163.87 8.18 161.44 6.72Q159.01 5.26 156.02 5.26Q153.06 5.26 150.63 6.72Q148.2 8.18 146.79 10.75Q145.37 13.32 145.37 16.76Q145.37 20.17 146.79 22.76Q148.2 25.35 150.63 26.81Q153.06 28.26 156.02 28.26ZM178.25 4.62H183.47Q185.37 4.62 186.89 5.06Q188.41 5.51 189.48 6.36Q190.56 7.21 191.12 8.42Q191.69 9.64 191.69 11.18Q191.69 12.88 190.88 14.33Q190.07 15.79 188.63 16.72Q187.2 17.65 185.37 17.86Q186.06 18.14 186.97 19.11Q187.89 20.08 188.53 21.02Q188.53 21.02 189.06 21.72Q189.59 22.43 190.42 23.47Q191.25 24.5 192.06 25.43Q192.91 26.36 193.61 27.05Q194.32 27.74 195.15 28.12Q195.98 28.51 197.08 28.51V28.91H195.82Q193.59 28.91 192.16 28.34Q190.72 27.78 189.83 26.95Q188.94 26.12 188.29 25.35Q188.13 25.15 187.54 24.32Q186.95 23.49 186.27 22.51Q185.58 21.54 185.01 20.75Q184.44 19.96 184.32 19.8Q183.51 18.75 182.46 17.92Q181.41 17.09 180.23 17.09V16.68Q180.23 16.68 180.88 16.7Q181.53 16.72 182.54 16.68Q183.67 16.64 184.81 16.5Q185.94 16.36 186.93 15.63Q187.93 14.9 188.49 13.2Q188.65 12.76 188.74 12.15Q188.82 11.54 188.78 10.89Q188.74 9.76 188.35 8.87Q187.97 7.98 187.26 7.33Q186.55 6.68 185.58 6.32Q184.61 5.95 183.39 5.91Q181.49 5.83 180.07 5.87Q178.65 5.91 178.65 5.87Q178.65 5.83 178.55 5.53Q178.45 5.22 178.35 4.92Q178.25 4.62 178.25 4.62ZM178.73 4.62V28.91H176.14V4.62ZM176.26 26.32 176.75 28.91H173.31V28.51Q173.31 28.51 173.59 28.51Q173.87 28.51 173.87 28.51Q174.85 28.51 175.49 27.86Q176.14 27.21 176.18 26.32ZM176.26 7.17H176.18Q176.14 6.24 175.49 5.63Q174.85 5.02 173.87 5.02Q173.87 5.02 173.59 5.02Q173.31 5.02 173.31 5.02V4.62H176.75ZM178.61 26.32H178.73Q178.77 27.21 179.42 27.86Q180.07 28.51 181.04 28.51Q181.04 28.51 181.31 28.51Q181.57 28.51 181.57 28.51L181.61 28.91H178.13ZM204.2 4.62V28.91H201.61V4.62ZM215.1 27.66 215.02 28.91H204.12V27.66ZM213.19 16.16V17.37H204.12V16.16ZM215.06 4.62V5.87H204.12V4.62ZM217.36 23.12 215.14 28.91H208.98L210.36 27.66Q212.38 27.66 213.62 27.07Q214.85 26.48 215.62 25.45Q216.39 24.42 216.96 23.12ZM213.19 17.29V19.6H212.75V19.07Q212.75 18.38 212.34 17.88Q211.94 17.37 211.09 17.37V17.29ZM213.19 13.93V16.24H211.09V16.16Q211.94 16.16 212.34 15.65Q212.75 15.14 212.75 14.46V13.93ZM215.06 5.75V8.54H214.61V7.94Q214.61 7.09 214.06 6.48Q213.52 5.87 212.59 5.87V5.75ZM215.06 3.97V5.02L210.44 4.62Q211.69 4.62 213.11 4.39Q214.53 4.17 215.06 3.97ZM201.69 26.32 202.22 28.91H198.7V28.51Q198.7 28.51 198.98 28.51Q199.26 28.51 199.26 28.51Q200.28 28.51 200.92 27.86Q201.57 27.21 201.61 26.32ZM201.69 7.17H201.61Q201.57 6.24 200.92 5.63Q200.28 5.02 199.26 5.02Q199.26 5.02 198.98 5.02Q198.7 5.02 198.7 5.02V4.62H202.22ZM225.91 4.62V28.91H223.32V4.62ZM236.8 27.66 236.72 28.91H225.83V27.66ZM239.07 23.12 236.84 28.91H230.69L232.06 27.66Q234.09 27.66 235.32 27.07Q236.56 26.48 237.33 25.45Q238.1 24.42 238.66 23.12ZM223.4 26.32 223.92 28.91H220.4V28.51Q220.4 28.51 220.68 28.51Q220.97 28.51 220.97 28.51Q221.98 28.51 222.63 27.86Q223.28 27.21 223.32 26.32ZM225.79 7.21V4.62H228.78V5.02Q228.78 5.02 228.54 5.02Q228.3 5.02 228.3 5.02Q227.33 5.02 226.62 5.65Q225.91 6.28 225.91 7.21ZM223.4 7.21H223.32Q223.28 6.28 222.59 5.65Q221.9 5.02 220.89 5.02Q220.89 5.02 220.64 5.02Q220.4 5.02 220.4 5.02V4.62H223.4ZM246.64 4.62V28.91H244.05V4.62ZM257.53 27.66 257.45 28.91H246.56V27.66ZM259.8 23.12 257.57 28.91H251.42L252.79 27.66Q254.82 27.66 256.05 27.07Q257.29 26.48 258.06 25.45Q258.83 24.42 259.4 23.12ZM244.13 26.32 244.66 28.91H241.13V28.51Q241.13 28.51 241.42 28.51Q241.7 28.51 241.7 28.51Q242.71 28.51 243.36 27.86Q244.01 27.21 244.05 26.32ZM246.52 7.21V4.62H249.51V5.02Q249.51 5.02 249.27 5.02Q249.03 5.02 249.03 5.02Q248.06 5.02 247.35 5.65Q246.64 6.28 246.64 7.21ZM244.13 7.21H244.05Q244.01 6.28 243.32 5.65Q242.63 5.02 241.62 5.02Q241.62 5.02 241.38 5.02Q241.13 5.02 241.13 5.02V4.62H244.13Z"/></symbol>
+  <symbol id="dm-logo" viewBox="0 0 300 300">
+    <circle cx="150" cy="150" r="150" style="fill: #ffffff"/>
+    <use href="#dm-wordmark" x="20.1" y="131.66" width="259.8" height="29.48" style="color: #111111"/>
+  </symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 3.5h2.6l1.4 4-2 1.3a11 11 0 0 0 6.6 6.6l1.3-2 4 1.4v2.6a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.2 9.3c.3 1.9 1.6 3.3 3.6 4l1-1.1 1.6.7-.4 1.4c-3.1.2-6.2-2.6-6.7-5.6l1.4-.6.8 1.5z" fill="currentColor"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></g></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></g></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M13.6 21v-7.4h2.5l.4-2.9h-2.9V8.9c0-.8.3-1.4 1.5-1.4h1.5V4.9c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.1H8.2v2.9h2.5V21z" fill="currentColor"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></g></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M19.5 14.6A8 8 0 0 1 9.4 4.5a8 8 0 1 0 10.1 10.1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
 </svg>
 
 <header class="nav" id="nav">
   <div class="nav__inner">
-    <a href="#top" class="brand" aria-label="Grafito Barber Studio, inicio">
-      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
-        <path d="M16 2.6 27.6 9.3v13.4L16 29.4 4.4 22.7V9.3z" fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <path d="M10.2 20.8 21.8 11.2" stroke="#d6a35c" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-      <span class="brand__word">GRAFITO</span>
+    <a href="#top" class="brand" aria-label="Don Morell, ir al inicio">
+      <svg class="brand__word" viewBox="0 0 259.8 29.48" aria-hidden="true"><use href="#dm-wordmark"/></svg>
     </a>
     <nav class="nav__links" aria-label="Principal">
       <a href="#estudio">Estudio</a>
       <a href="#servicios">Servicios</a>
       <a href="#ritual">Ritual</a>
-      <a href="#equipo">Equipo</a>
-      <a href="#club">Club</a>
-      <a href="#visitanos">Visítanos</a>
+      <a href="#visitanos">Ubicación</a>
     </nav>
-    <a href="#reserva" class="btn btn--brass btn--sm nav__cta">Reservar</a>
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
-      <span></span><span></span>
-    </button>
+    <div class="nav__actions">
+      <button class="theme-toggle" type="button" aria-label="Cambiar a modo oscuro">
+        <svg class="i i--moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="i i--sun" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+      <a href="#reserva" class="btn btn--primary btn--sm nav__cta">Reservar</a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+    </div>
   </div>
   <div class="progress" aria-hidden="true"><span></span></div>
   <div class="menu" id="menu" aria-hidden="true" inert>
@@ -82,32 +105,40 @@
       <a href="#estudio" style="--i:0">Estudio</a>
       <a href="#servicios" style="--i:1">Servicios</a>
       <a href="#ritual" style="--i:2">Ritual</a>
-      <a href="#equipo" style="--i:3">Equipo</a>
-      <a href="#club" style="--i:4">Club</a>
-      <a href="#visitanos" style="--i:5">Visítanos</a>
+      <a href="#reserva" style="--i:3">Reservar</a>
+      <a href="#visitanos" style="--i:4">Ubicación</a>
     </nav>
-    <a href="#reserva" class="btn btn--brass menu__cta" style="--i:6">Reserva tu cita</a>
+    <div class="menu__foot" style="--i:5">
+      <a href="#reserva" class="btn btn--primary btn--block">Reservar cita</a>
+      <a href="tel:+529612832818" class="btn btn--ghost btn--block"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>+52 961 283 2818</a>
+    </div>
   </div>
 </header>
 
 <main id="main">
 
-  <!-- HERO -->
+  <!-- PORTADA -->
   <section class="hero" id="top" aria-labelledby="hero-title">
     <canvas class="hero__canvas" aria-hidden="true"></canvas>
     <div class="hero__veil" aria-hidden="true"></div>
     <div class="hero__content container">
-      <p class="eyebrow hero__eyebrow"><span class="pulse-dot" aria-hidden="true"></span>Barber Studio · Desde 2014</p>
-      <h1 class="hero__title" id="hero-title"><span class="hero__word">Grafito</span></h1>
-      <p class="hero__tagline">
-        <span style="--i:0">Tan preciso.</span>
-        <span style="--i:1">Tan elegante.</span>
-        <span style="--i:2"><span class="serif text-brass">Tan tú.</span></span>
-      </p>
+      <p class="eyebrow hero__eyebrow"><span>Barbería de caballeros</span><span class="hero__sep" aria-hidden="true">·</span><span>Tuxtla Gutiérrez</span></p>
+      <h1 class="hero__medal" id="hero-title">
+        <span class="sr-only">Don Morell, barbería en Tuxtla Gutiérrez</span>
+        <span class="medal" aria-hidden="true">
+          <svg class="medal__bezel" viewBox="0 0 400 400">
+            <circle class="bezel-minor" cx="200" cy="200" r="190"/>
+            <circle class="bezel-major" cx="200" cy="200" r="190"/>
+          </svg>
+          <svg class="medal__logo" viewBox="0 0 300 300"><use href="#dm-logo"/></svg>
+        </span>
+      </h1>
+      <p class="hero__tagline">Corte, barba y navaja <span class="serif">con la elegancia de siempre.</span></p>
       <div class="hero__actions">
-        <a href="#reserva" class="btn btn--brass btn--lg magnetic">Reserva tu cita</a>
-        <a href="#estudio" class="link-arrow">Descubre el estudio</a>
+        <a href="#reserva" class="btn btn--primary btn--lg magnetic">Reservar cita</a>
+        <a href="tel:+529612832818" class="btn btn--ghost btn--lg"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Llamar</a>
       </div>
+      <p class="status hero__status" data-status><span class="status__dot" aria-hidden="true"></span><span class="status__text">Lunes a sábado · Plaza Marfil</span></p>
     </div>
     <a href="#estudio" class="scroll-cue" aria-label="Bajar al estudio"><span></span></a>
   </section>
@@ -117,7 +148,7 @@
     <div class="statement__sticky">
       <div class="container">
         <p class="eyebrow">El estudio</p>
-        <p class="statement__text" data-words>En Grafito, cada corte se diseña antes de empezar. Técnica clásica, herramientas de <em>precisión</em> y un ritual pensado alrededor de <em>ti.</em> Sin prisas. Sin atajos. Solo un resultado impecable.</p>
+        <p class="statement__text" data-words>En Don Morell, cada corte empieza con una <em>conversación.</em> Escuchamos lo que buscas, cuidamos cada detalle y trabajamos sin prisas. Tradición de barbería, con la <em>precisión</em> que mereces.</p>
       </div>
     </div>
   </section>
@@ -127,7 +158,7 @@
     <div class="razor__sticky">
       <header class="razor__head container">
         <p class="eyebrow">La herramienta</p>
-        <h2 class="display" id="razor-title">Afilada para la <span class="text-brass">perfección.</span></h2>
+        <h2 class="display" id="razor-title">Afilada para la <span class="serif">perfección.</span></h2>
       </header>
       <div class="razor__stage">
         <div class="razor__halo" aria-hidden="true"></div>
@@ -147,70 +178,58 @@
               <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
             </linearGradient>
             <linearGradient id="rz-scale" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#3b4047"/>
-              <stop offset=".14" stop-color="#22262b"/>
-              <stop offset=".55" stop-color="#121417"/>
-              <stop offset="1" stop-color="#08090a"/>
+              <stop offset="0" stop-color="#3b3a38"/>
+              <stop offset=".14" stop-color="#252422"/>
+              <stop offset=".55" stop-color="#141312"/>
+              <stop offset="1" stop-color="#090908"/>
             </linearGradient>
             <linearGradient id="rz-brass" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#f6e3bd"/>
-              <stop offset=".5" stop-color="#d6a35c"/>
-              <stop offset="1" stop-color="#8a5c27"/>
+              <stop offset="0" stop-color="#fbf3e2"/>
+              <stop offset=".5" stop-color="#d9c39a"/>
+              <stop offset="1" stop-color="#8f7547"/>
             </linearGradient>
             <radialGradient id="rz-floor">
-              <stop offset="0" stop-color="#000000" stop-opacity=".95"/>
+              <stop offset="0" stop-color="#000000" stop-opacity=".9"/>
               <stop offset="1" stop-color="#000000" stop-opacity="0"/>
             </radialGradient>
           </defs>
-          <ellipse id="razor-shadow" cx="0" cy="190" rx="430" ry="28" fill="url(#rz-floor)" opacity=".8"/>
+          <ellipse id="razor-shadow" class="rz-floor" cx="0" cy="190" rx="430" ry="28" fill="url(#rz-floor)" opacity=".8"/>
           <g id="razor-body" transform="translate(-18 0) rotate(-2)">
             <g id="razor-blade" transform="rotate(0)">
               <path d="M0 -14 L70 -10 Q82 -9 82 -1 Q82 8 70 9 L0 12 L-66 13 C-78 13 -86 20 -94 30 Q-240 50 -388 44 Q-410 42 -410 12 Q-410 -20 -384 -22 L-82 -17 L-66 -16 Z" fill="url(#rz-steel)"/>
               <path d="M-384 -21 L-82 -16" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width="1.4"/>
               <path d="M-98 27 Q-240 45 -384 39" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.2"/>
               <path d="M20 -13v5M28 -12.6v5M36 -12.2v5M44 -11.8v5M52 -11.4v5" stroke="#000000" stroke-opacity=".35" stroke-width="1.6"/>
-              <text x="-332" y="10" class="rz-etch">GRAFITO · 440C</text>
-              <path class="rz-sheen" d="M0 -14 L70 -10 Q82 -9 82 -1 Q82 8 70 9 L0 12 L-66 13 C-78 13 -86 20 -94 30 Q-240 50 -388 44 Q-410 42 -410 12 Q-410 -20 -384 -22 L-82 -17 L-66 -16 Z" fill="url(#rz-sheen)"/>
+              <svg x="-330" y="-1" width="150" height="17" viewBox="0 0 259.8 29.48" class="rz-etch"><use href="#dm-wordmark"/></svg>
+              <path d="M0 -14 L70 -10 Q82 -9 82 -1 Q82 8 70 9 L0 12 L-66 13 C-78 13 -86 20 -94 30 Q-240 50 -388 44 Q-410 42 -410 12 Q-410 -20 -384 -22 L-82 -17 L-66 -16 Z" fill="url(#rz-sheen)"/>
             </g>
             <path d="M-40 -42 C-56 -42 -62 -22 -62 0 C-62 22 -56 42 -40 42 L420 48 C444 48 460 28 460 0 C460 -28 444 -48 420 -48 Z" fill="url(#rz-scale)" stroke="#ffffff" stroke-opacity=".1"/>
             <path d="M-38 -38 L420 -44" fill="none" stroke="#ffffff" stroke-opacity=".14" stroke-width="1.5"/>
-            <text x="220" y="5" class="rz-brand" text-anchor="middle">GRAFITO</text>
+            <svg x="110" y="-10" width="220" height="25" viewBox="0 0 259.8 29.48" class="rz-brand"><use href="#dm-wordmark"/></svg>
             <circle cx="420" cy="0" r="6.5" fill="url(#rz-brass)"/>
             <circle cx="0" cy="0" r="9" fill="url(#rz-brass)"/>
-            <circle cx="0" cy="0" r="3.2" fill="#5b3d18"/>
+            <circle cx="0" cy="0" r="3.2" fill="#4a3b22"/>
           </g>
         </svg>
         <ul class="razor__specs">
-          <li><span class="spec__value">1:1</span><span class="spec__label">Una hoja nueva por cliente. Siempre.</span></li>
-          <li><span class="spec__value">30°</span><span class="spec__label">El ángulo exacto de la navaja sobre la piel.</span></li>
-          <li><span class="spec__value">45 °C</span><span class="spec__label">Toalla caliente que abre el poro antes de afeitar.</span></li>
-          <li><span class="spec__value">0,1 mm</span><span class="spec__label">De tolerancia en cada línea del perfilado.</span></li>
+          <li><span class="spec__value">1:1</span><span class="spec__label">Hoja nueva para cada cliente.</span></li>
+          <li><span class="spec__value">30°</span><span class="spec__label">El ángulo de la navaja sobre la piel.</span></li>
+          <li><span class="spec__value">Vapor</span><span class="spec__label">Toalla caliente para preparar la piel.</span></li>
+          <li><span class="spec__value">A mano</span><span class="spec__label">Perfilado de barba, nuca y patillas.</span></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- CIFRAS -->
-  <section class="numbers" aria-label="Grafito en cifras">
+  <!-- HORARIO EN BREVE -->
+  <section class="facts" aria-label="Horario y ubicación">
     <div class="container">
-      <div class="numbers__grid" data-stagger>
-        <div class="numbers__item">
-          <p class="numbers__value"><span data-count="12">12</span></p>
-          <p class="numbers__label">años de oficio en el barrio</p>
-        </div>
-        <div class="numbers__item">
-          <p class="numbers__value"><span data-count="38000">38.000</span><small>+</small></p>
-          <p class="numbers__label">cortes realizados</p>
-        </div>
-        <div class="numbers__item">
-          <p class="numbers__value"><span data-count="4.9" data-decimals="1">4,9</span><small>★</small></p>
-          <p class="numbers__label">valoración media en 1.240 reseñas</p>
-        </div>
-        <div class="numbers__item">
-          <p class="numbers__value"><span data-count="7">7</span></p>
-          <p class="numbers__label">días a la semana abiertos</p>
-        </div>
-      </div>
+      <dl class="facts__grid" data-stagger>
+        <div class="fact"><dt>Lunes a viernes</dt><dd>10:30 a.m. – 8:30 p.m.</dd></div>
+        <div class="fact"><dt>Sábado</dt><dd>9:00 a.m. – 8:00 p.m.</dd></div>
+        <div class="fact"><dt>Domingo</dt><dd>Cerrado</dd></div>
+        <div class="fact"><dt>Plaza Marfil</dt><dd>Local 9 · Tuxtla</dd></div>
+      </dl>
     </div>
   </section>
 
@@ -219,8 +238,8 @@
     <div class="container">
       <header class="section-head" data-reveal>
         <p class="eyebrow">Servicios</p>
-        <h2 class="display" id="services-title">Diseñados <span class="serif">al milímetro.</span></h2>
-        <p class="lead">Cada servicio incluye consulta previa y acabado con producto profesional. Precio final, sin sorpresas.</p>
+        <h2 class="display" id="services-title">Hechos a tu medida, <span class="serif">al milímetro.</span></h2>
+        <p class="lead">Cada servicio incluye una consulta previa y el acabado con producto profesional.</p>
       </header>
 
       <div class="bento">
@@ -231,19 +250,19 @@
           </div>
           <div class="card__body">
             <p class="card__tag">El más pedido</p>
-            <h3>Corte Signature</h3>
-            <p>Consulta de estilo, corte a tijera y máquina, lavado y peinado con producto premium.</p>
-            <div class="card__meta"><span class="card__time">45 min</span><span class="card__price">$35</span></div>
-            <a class="link-arrow" href="#reserva" data-pick-service="signature">Reservar</a>
+            <h3>Corte de cabello</h3>
+            <p>Consulta de estilo, corte a tijera y máquina, lavado y peinado.</p>
+            <div class="card__meta"><span class="card__time">45 min</span><span class="card__price">$200</span></div>
+            <a class="link-arrow" href="#reserva" data-pick-service="corte">Reservar</a>
           </div>
         </article>
 
         <article class="card card--wide" data-reveal>
           <div class="card__body">
             <p class="card__tag">Técnica</p>
-            <h3>Fade de Precisión</h3>
-            <p>Degradados desde la piel hasta la longitud que elijas, con transiciones invisibles.</p>
-            <div class="card__meta"><span class="card__time">40 min</span><span class="card__price">$30</span></div>
+            <h3>Fade / Degradado</h3>
+            <p>Degradado desde la piel hasta la longitud que elijas, con transiciones limpias.</p>
+            <div class="card__meta"><span class="card__time">45 min</span><span class="card__price">$220</span></div>
             <a class="link-arrow" href="#reserva" data-pick-service="fade">Reservar</a>
           </div>
           <div class="guard" aria-label="Escala de peines de máquina, de 0,5 a 13 milímetros">
@@ -261,11 +280,11 @@
         </article>
 
         <article class="card" data-reveal>
-          <div class="card__figure" aria-hidden="true"><span class="figure-num">45</span><span class="figure-unit">°C</span></div>
+          <div class="card__figure" aria-hidden="true"><span class="figure-num">3</span><span class="figure-unit">pasos</span></div>
           <div class="card__body">
-            <h3>Barba Escultural</h3>
-            <p>Perfilado a navaja, toalla caliente y aceite de acabado.</p>
-            <div class="card__meta"><span class="card__time">30 min</span><span class="card__price">$22</span></div>
+            <h3>Arreglo de barba</h3>
+            <p>Perfilado a navaja, toalla caliente y aceite para barba.</p>
+            <div class="card__meta"><span class="card__time">30 min</span><span class="card__price">$150</span></div>
             <a class="link-arrow" href="#reserva" data-pick-service="barba">Reservar</a>
           </div>
         </article>
@@ -276,50 +295,46 @@
             <span class="figure-num">30°</span>
           </div>
           <div class="card__body">
-            <h3>Afeitado Clásico</h3>
+            <h3>Afeitado clásico</h3>
             <p>Espuma caliente, navaja y bálsamo. El ritual de siempre.</p>
-            <div class="card__meta"><span class="card__time">35 min</span><span class="card__price">$25</span></div>
+            <div class="card__meta"><span class="card__time">35 min</span><span class="card__price">$180</span></div>
             <a class="link-arrow" href="#reserva" data-pick-service="afeitado">Reservar</a>
           </div>
         </article>
 
         <article class="card" data-reveal>
-          <div class="swatches" aria-hidden="true">
-            <span style="--c:#101013"></span><span style="--c:#2b1d15"></span><span style="--c:#4a3021"></span><span style="--c:#6e4b30"></span><span style="--c:#8f6d48"></span><span style="--c:#b9bcc1"></span>
+          <div class="card__figure card__figure--brow" aria-hidden="true">
+            <svg class="draw" viewBox="0 0 120 50"><path class="brow-guide" d="M6 40H114"/><path class="brow-line" d="M10 36C34 14 70 8 110 22" pathLength="1"/><path class="brow-line" d="M10 36C36 22 70 18 106 27" pathLength="1"/></svg>
           </div>
           <div class="card__body">
-            <h3>Color &amp; Canas</h3>
-            <p>Camuflaje de canas o color completo con acabado natural.</p>
-            <div class="card__meta"><span class="card__time">50 min</span><span class="card__price">$40</span></div>
-            <a class="link-arrow" href="#reserva" data-pick-service="color">Reservar</a>
+            <h3>Cejas y detalles</h3>
+            <p>Limpieza de cejas y perfilado de contornos para un acabado pulido.</p>
+            <div class="card__meta"><span class="card__time">15 min</span><span class="card__price">$60</span></div>
+            <a class="link-arrow" href="#reserva" data-pick-service="cejas">Reservar</a>
           </div>
         </article>
 
         <article class="card" data-reveal>
           <div class="card__figure" aria-hidden="true"><span class="figure-num">≤12</span><span class="figure-unit">años</span></div>
           <div class="card__body">
-            <h3>Corte Niños</h3>
-            <p>Para los caballeros del mañana, con toda la paciencia del mundo.</p>
-            <div class="card__meta"><span class="card__time">30 min</span><span class="card__price">$20</span></div>
-            <a class="link-arrow" href="#reserva" data-pick-service="ninos">Reservar</a>
+            <h3>Corte niño</h3>
+            <p>Para los caballeros del mañana, con toda la paciencia.</p>
+            <div class="card__meta"><span class="card__time">30 min</span><span class="card__price">$150</span></div>
+            <a class="link-arrow" href="#reserva" data-pick-service="nino">Reservar</a>
           </div>
         </article>
 
         <article class="card card--wide card--featured" data-reveal>
           <div class="card__body">
             <p class="card__tag">Experiencia completa</p>
-            <h3>Ritual Grafito</h3>
-            <p>Corte Signature, barba escultural, mascarilla facial y bebida de cortesía.</p>
-            <div class="card__meta"><span class="card__time">90 min</span><span class="card__price">$65</span></div>
-            <a class="link-arrow" href="#reserva" data-pick-service="ritual">Reservar</a>
+            <h3>Corte + Barba</h3>
+            <p>El combo Don Morell: corte de cabello y arreglo de barba en una sola visita.</p>
+            <div class="card__meta"><span class="card__time">75 min</span><span class="card__price">$320</span></div>
+            <a class="link-arrow" href="#reserva" data-pick-service="combo">Reservar</a>
           </div>
-          <div class="timeline" aria-label="Reparto del tiempo: corte 45 minutos, barba 25, mascarilla 15, bebida 5">
-            <div class="timeline__bar">
-              <span style="--w:45"></span><span style="--w:25"></span><span style="--w:15"></span><span style="--w:5"></span>
-            </div>
-            <div class="timeline__labels">
-              <span>Corte 45′</span><span>Barba 25′</span><span>Mascarilla 15′</span><span>Bebida 5′</span>
-            </div>
+          <div class="timeline" aria-label="Reparto del tiempo: corte 45 minutos y barba 30 minutos">
+            <div class="timeline__bar"><span style="--w:45"></span><span style="--w:30"></span></div>
+            <div class="timeline__labels"><span>Corte 45′</span><span>Barba 30′</span></div>
           </div>
         </article>
       </div>
@@ -336,153 +351,38 @@
       <div class="ritual__viewport">
         <ol class="ritual__track">
           <li class="step">
-            <div class="step__top"><span class="step__num">01</span><span class="step__time">5 min</span></div>
+            <div class="step__top"><span class="step__num">01</span><span class="step__tag">Escuchar</span></div>
             <svg class="step__icon step__icon--scan" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8V3h5M16 3h5v5M21 16v5h-5M8 21H3v-5"/><ellipse cx="12" cy="11.5" rx="4.6" ry="6"/><path class="scan-line" d="M5.5 12h13"/></svg>
-            <h3>Diagnóstico</h3>
-            <p>Analizamos tu tipo de cabello, la forma de tu rostro y cómo te peinas cada día.</p>
+            <h3>Conversación</h3>
+            <p>Nos cuentas qué buscas. Revisamos tu tipo de cabello y la forma de tu rostro.</p>
           </li>
           <li class="step">
-            <div class="step__top"><span class="step__num">02</span><span class="step__time">5 min</span></div>
+            <div class="step__top"><span class="step__num">02</span><span class="step__tag">Preparar</span></div>
             <svg class="step__icon step__icon--wave" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 8c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2 2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/><path d="M0 12.5c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2 2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/><path d="M0 17c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2 2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/></svg>
-            <h3>Lavado</h3>
-            <p>Champú y masaje capilar con agua a temperatura controlada.</p>
+            <h3>Preparación</h3>
+            <p>Lavado y toalla caliente para trabajar sobre una base limpia.</p>
           </li>
           <li class="step">
-            <div class="step__top"><span class="step__num">03</span><span class="step__time">25 min</span></div>
+            <div class="step__top"><span class="step__num">03</span><span class="step__tag">Cortar</span></div>
             <svg class="step__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg>
             <h3>Corte</h3>
-            <p>Tijera y máquina en manos expertas. Cada línea tiene una intención.</p>
+            <p>Tijera y máquina con técnica. Cada línea tiene una intención.</p>
           </li>
           <li class="step">
-            <div class="step__top"><span class="step__num">04</span><span class="step__time">5 min</span></div>
+            <div class="step__top"><span class="step__num">04</span><span class="step__tag">Perfilar</span></div>
             <svg class="step__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 14.5h10.5V10c-4 0-8.5 1.5-10.5 4.5z"/><path d="M13 12.3l8.5-3"/><circle cx="13" cy="12.2" r=".7"/></svg>
             <h3>Detalle</h3>
-            <p>Perfilado a navaja de nuca y patillas. Toalla caliente para cerrar.</p>
+            <p>Perfilado a navaja de nuca, patillas y barba.</p>
           </li>
           <li class="step">
-            <div class="step__top"><span class="step__num">05</span><span class="step__time">5 min</span></div>
+            <div class="step__top"><span class="step__num">05</span><span class="step__tag">Rematar</span></div>
             <svg class="step__icon step__icon--spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7z"/><path d="M19 15.5c.3 1.6.9 2.2 2.5 2.5-1.6.3-2.2.9-2.5 2.5-.3-1.6-.9-2.2-2.5-2.5 1.6-.3 2.2-.9 2.5-2.5z"/></svg>
             <h3>Acabado</h3>
-            <p>Styling con producto profesional y una rutina para mantenerlo en casa.</p>
+            <p>Peinado con producto profesional y consejos para mantenerlo en casa.</p>
           </li>
         </ol>
       </div>
       <div class="container"><div class="ritual__bar" aria-hidden="true"><span></span></div></div>
-    </div>
-  </section>
-
-  <!-- EQUIPO -->
-  <section class="team section" id="equipo" aria-labelledby="team-title">
-    <div class="container">
-      <header class="section-head" data-reveal>
-        <p class="eyebrow">El equipo</p>
-        <h2 class="display" id="team-title">Manos expertas. <span class="serif">Criterio propio.</span></h2>
-        <p class="lead">Cuatro barberos con estilos distintos y un mismo estándar. Elige al tuyo o deja que te recomendemos.</p>
-      </header>
-      <div class="team__grid" data-stagger>
-        <article class="barber" style="--cx:28%;--cy:22%">
-          <div class="barber__portrait" aria-hidden="true"><span class="barber__initials">AM</span></div>
-          <div class="barber__info">
-            <p class="barber__role">Fundador · Master Barber</p>
-            <h3>Andrés Molina</h3>
-            <p class="barber__spec">Fades y diseño · 14 años</p>
-            <a class="link-arrow" href="#reserva" data-pick-barber="andres">Reservar con Andrés</a>
-          </div>
-        </article>
-        <article class="barber" style="--cx:72%;--cy:30%">
-          <div class="barber__portrait" aria-hidden="true"><span class="barber__initials">DR</span></div>
-          <div class="barber__info">
-            <p class="barber__role">Senior Barber</p>
-            <h3>Diego Ramírez</h3>
-            <p class="barber__spec">Barbas y afeitado clásico · 9 años</p>
-            <a class="link-arrow" href="#reserva" data-pick-barber="diego">Reservar con Diego</a>
-          </div>
-        </article>
-        <article class="barber" style="--cx:40%;--cy:70%">
-          <div class="barber__portrait" aria-hidden="true"><span class="barber__initials">SH</span></div>
-          <div class="barber__info">
-            <p class="barber__role">Stylist</p>
-            <h3>Sofía Herrera</h3>
-            <p class="barber__spec">Texturas y color · 7 años</p>
-            <a class="link-arrow" href="#reserva" data-pick-barber="sofia">Reservar con Sofía</a>
-          </div>
-        </article>
-        <article class="barber" style="--cx:66%;--cy:78%">
-          <div class="barber__portrait" aria-hidden="true"><span class="barber__initials">MV</span></div>
-          <div class="barber__info">
-            <p class="barber__role">Barber</p>
-            <h3>Mateo Vargas</h3>
-            <p class="barber__spec">Cortes clásicos y niños · 4 años</p>
-            <a class="link-arrow" href="#reserva" data-pick-barber="mateo">Reservar con Mateo</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- RESEÑAS -->
-  <section class="reviews section" aria-labelledby="reviews-title">
-    <header class="container section-head section-head--center" data-reveal>
-      <p class="eyebrow">Reseñas de ejemplo</p>
-      <h2 class="display" id="reviews-title">4,9 de 5.<br><span class="text-muted">En 1.240 reseñas.</span></h2>
-    </header>
-    <div class="marquee" data-dir="left">
-      <ul class="marquee__track">
-        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“El mejor fade que me han hecho. Salí sin una sola línea marcada.”</blockquote><p class="review__who"><strong>Carlos M.</strong> · Fade de Precisión</p></li>
-        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“Puntuales, limpios y con un trato impecable. Ya no voy a otro sitio.”</blockquote><p class="review__who"><strong>Javier R.</strong> · Corte Signature</p></li>
-        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“El afeitado con toalla caliente es otra liga. Vale cada minuto.”</blockquote><p class="review__who"><strong>Andrés P.</strong> · Afeitado Clásico</p></li>
-        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“Sofía entendió lo que quería sin que le enseñara una sola foto.”</blockquote><p class="review__who"><strong>Daniel G.</strong> · Corte Signature</p></li>
-        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“Reservé en dos minutos y me atendieron a la hora exacta.”</blockquote><p class="review__who"><strong>Miguel A.</strong> · Barba Escultural</p></li>
-      </ul>
-    </div>
-    <div class="marquee" data-dir="right">
-      <ul class="marquee__track">
-        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“Llevo a mi hijo desde los 5 años. Paciencia infinita y cortes de diez.”</blockquote><p class="review__who"><strong>Laura V.</strong> · Corte Niños</p></li>
-        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“El Ritual Grafito es mi regalo de fin de mes. Salgo nuevo.”</blockquote><p class="review__who"><strong>Sebastián T.</strong> · Ritual Grafito</p></li>
-        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“Por fin una barbería donde te explican qué te van a hacer y por qué.”</blockquote><p class="review__who"><strong>Felipe C.</strong> · Corte Signature</p></li>
-        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“Me cubrieron las canas y nadie lo nota. Natural de verdad.”</blockquote><p class="review__who"><strong>Ricardo S.</strong> · Color &amp; Canas</p></li>
-        <li class="review"><p class="review__stars" aria-label="5 de 5 estrellas">★★★★★</p><blockquote>“Buen ambiente, buena música y el mejor café del barrio.”</blockquote><p class="review__who"><strong>Tomás L.</strong> · Ritual Grafito</p></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- CLUB -->
-  <section class="club section" id="club" aria-labelledby="club-title">
-    <div class="container">
-      <header class="section-head section-head--center" data-reveal>
-        <p class="eyebrow">Club Grafito</p>
-        <h2 class="display" id="club-title">Siempre impecable. <span class="serif text-brass">Cada mes.</span></h2>
-        <p class="lead">Una cuota fija, reservas prioritarias y tu barbero de confianza a un mensaje de distancia.</p>
-        <div class="billing" role="group" aria-label="Periodo de pago">
-          <span class="billing__thumb" aria-hidden="true"></span>
-          <button type="button" data-billing="monthly" aria-pressed="true">Mensual</button>
-          <button type="button" data-billing="annual" aria-pressed="false">Anual <em>2 meses gratis</em></button>
-        </div>
-      </header>
-      <div class="plans" data-stagger>
-        <article class="plan">
-          <header class="plan__head"><h3>Esencial</h3><p>Para llevar el corte siempre al día.</p></header>
-          <p class="plan__price"><span class="plan__cur">$</span><span data-price data-monthly="49" data-annual="41">49</span><span class="plan__per">/mes</span></p>
-          <p class="plan__note" data-note-monthly="Pago mensual. Cancela cuando quieras." data-note-annual="Un solo pago de $490 al año.">Pago mensual. Cancela cuando quieras.</p>
-          <ul class="plan__list"><li>2 cortes al mes</li><li>Reserva prioritaria</li><li>10% en productos</li></ul>
-          <a class="btn btn--ghost btn--block" href="#reserva" data-plan="Esencial">Unirme al Club</a>
-        </article>
-        <article class="plan plan--featured">
-          <span class="plan__badge">Recomendado</span>
-          <header class="plan__head"><h3>Pro</h3><p>Corte y barba impecables todo el mes.</p></header>
-          <p class="plan__price"><span class="plan__cur">$</span><span data-price data-monthly="79" data-annual="66">79</span><span class="plan__per">/mes</span></p>
-          <p class="plan__note" data-note-monthly="Pago mensual. Cancela cuando quieras." data-note-annual="Un solo pago de $790 al año.">Pago mensual. Cancela cuando quieras.</p>
-          <ul class="plan__list"><li>4 cortes al mes</li><li>2 arreglos de barba</li><li>15% en productos</li><li>Bebida de cortesía</li></ul>
-          <a class="btn btn--brass btn--block" href="#reserva" data-plan="Pro">Unirme al Club</a>
-        </article>
-        <article class="plan">
-          <header class="plan__head"><h3>Black</h3><p>Sin límites, para quien no negocia su imagen.</p></header>
-          <p class="plan__price"><span class="plan__cur">$</span><span data-price data-monthly="129" data-annual="108">129</span><span class="plan__per">/mes</span></p>
-          <p class="plan__note" data-note-monthly="Pago mensual. Cancela cuando quieras." data-note-annual="Un solo pago de $1.290 al año.">Pago mensual. Cancela cuando quieras.</p>
-          <ul class="plan__list"><li>Cortes y barba ilimitados</li><li>1 Ritual Grafito al mes</li><li>20% en productos</li><li>Barbero asignado y horario preferente</li></ul>
-          <a class="btn btn--ghost btn--block" href="#reserva" data-plan="Black">Unirme al Club</a>
-        </article>
-      </div>
     </div>
   </section>
 
@@ -491,8 +391,8 @@
     <div class="container">
       <header class="section-head" data-reveal>
         <p class="eyebrow">Reservas</p>
-        <h2 class="display" id="booking-title">Tu próximo corte empieza <span class="serif text-brass">aquí.</span></h2>
-        <p class="lead">Elige servicio, barbero y hora. Te confirmamos por WhatsApp en minutos.</p>
+        <h2 class="display" id="booking-title">Tu próximo corte empieza <span class="serif">aquí.</span></h2>
+        <p class="lead">Elige servicio, día y hora. Te confirmamos por WhatsApp.</p>
       </header>
       <form class="booker" id="booker" novalidate data-reveal>
         <div class="booker__steps">
@@ -501,43 +401,49 @@
             <div class="chips" id="bk-services"></div>
           </fieldset>
           <fieldset class="booker__group">
-            <legend><span class="booker__n">2</span>Barbero</legend>
-            <div class="chips" id="bk-barbers"></div>
-          </fieldset>
-          <fieldset class="booker__group">
-            <legend><span class="booker__n">3</span>Día</legend>
+            <legend><span class="booker__n">2</span>Día</legend>
             <div class="days" id="bk-days"></div>
           </fieldset>
           <fieldset class="booker__group">
-            <legend><span class="booker__n">4</span>Hora</legend>
+            <legend><span class="booker__n">3</span>Hora</legend>
             <div class="slots" id="bk-slots"></div>
-            <p class="booker__hint" id="bk-slots-hint">Elige un día para ver las horas libres.</p>
+            <p class="booker__hint" id="bk-slots-hint">Elige un día para ver los horarios.</p>
           </fieldset>
           <div class="booker__group">
-            <label class="booker__label" for="bk-name"><span class="booker__n">5</span>Tu nombre</label>
-            <input class="input" id="bk-name" name="name" type="text" autocomplete="given-name" placeholder="¿Cómo te llamamos?" maxlength="40">
+            <p class="booker__label"><span class="booker__n">4</span>Tus datos</p>
+            <div class="fields">
+              <div class="field">
+                <label class="field__label" for="bk-name">Nombre</label>
+                <input class="input" id="bk-name" name="name" type="text" autocomplete="given-name" placeholder="¿Cómo te llamamos?" maxlength="40">
+              </div>
+              <div class="field">
+                <label class="field__label" for="bk-note">Nota <span>(opcional)</span></label>
+                <input class="input" id="bk-note" name="note" type="text" placeholder="Barbero de preferencia, estilo…" maxlength="120">
+              </div>
+            </div>
           </div>
         </div>
         <aside class="summary">
           <div class="summary__view" id="bk-summary">
-            <p class="eyebrow">Tu reserva</p>
+            <p class="eyebrow">Tu cita</p>
             <dl class="summary__list">
               <div><dt>Servicio</dt><dd id="sum-service">—</dd></div>
-              <div><dt>Barbero</dt><dd id="sum-barber">—</dd></div>
               <div><dt>Día</dt><dd id="sum-day">—</dd></div>
               <div><dt>Hora</dt><dd id="sum-time">—</dd></div>
+              <div><dt>Duración</dt><dd id="sum-length">—</dd></div>
             </dl>
             <div class="summary__total"><span>Total</span><strong id="sum-total">$0</strong></div>
             <p class="summary__error" id="bk-error" role="alert"></p>
-            <button type="submit" class="btn btn--brass btn--block">Confirmar reserva</button>
-            <p class="summary__note">Pagas en el estudio. Puedes cambiar o cancelar tu cita hasta 2 horas antes.</p>
+            <button type="submit" class="btn btn--primary btn--block">Confirmar reserva</button>
+            <p class="summary__note">Pagas en la barbería. ¿Prefieres llamar? <span class="nowrap">+52 961 283 2818</span></p>
           </div>
           <div class="summary__done" id="bk-done" hidden>
             <svg class="done-check" viewBox="0 0 52 52" aria-hidden="true"><path d="M50 26a24 24 0 1 1-48 0 24 24 0 1 1 48 0" pathLength="1"/><path d="M15 27l7 7 15-16" pathLength="1"/></svg>
-            <h3 id="done-title">Todo listo.</h3>
-            <p id="done-text">Envíanos la solicitud por WhatsApp y te confirmamos la cita en minutos.</p>
-            <a class="btn btn--brass btn--block" id="bk-whatsapp" href="#reserva" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+            <h3 id="done-title">Casi listo.</h3>
+            <p id="done-text">Envíanos la solicitud por WhatsApp y te confirmamos la cita.</p>
+            <a class="btn btn--primary btn--block" id="bk-whatsapp" href="#reserva" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg>Enviar por WhatsApp</a>
             <button type="button" class="btn btn--ghost btn--block" id="bk-edit">Editar reserva</button>
+            <p class="summary__note">Si WhatsApp no se abre, llámanos al <span class="nowrap">+52 961 283 2818</span>.</p>
           </div>
         </aside>
       </form>
@@ -563,27 +469,59 @@
             <circle class="pin__dot" r="7"/>
           </g>
         </svg>
-        <div class="map__card"><strong>Grafito</strong><span>Av. Principal 1450</span></div>
+        <div class="map__card"><strong>Don Morell</strong><span>Plaza Marfil · Local 9</span></div>
       </div>
       <div class="visit__info" data-reveal>
-        <p class="eyebrow">Visítanos</p>
-        <h2 class="display display--sm" id="visit-title">En el centro de todo.</h2>
-        <address class="visit__address">Av. Principal 1450, local 3<br>Centro</address>
-        <p class="status" id="open-status"><span class="status__dot" aria-hidden="true"></span><span class="status__text">Abierto los 7 días</span></p>
+        <p class="eyebrow">Ubicación</p>
+        <h2 class="display display--sm" id="visit-title">Te esperamos en <span class="serif">Plaza Marfil.</span></h2>
+        <address class="visit__address">16 Nte. Pte. 132, local 9, Plaza Marfil<br>29030 Tuxtla Gutiérrez, Chis.</address>
+        <p class="status" data-status><span class="status__dot" aria-hidden="true"></span><span class="status__text">Lunes a sábado</span></p>
         <ul class="hours" id="hours">
-          <li data-day="1"><span>Lunes</span><span>10:00 – 21:00</span></li>
-          <li data-day="2"><span>Martes</span><span>10:00 – 21:00</span></li>
-          <li data-day="3"><span>Miércoles</span><span>10:00 – 21:00</span></li>
-          <li data-day="4"><span>Jueves</span><span>10:00 – 21:00</span></li>
-          <li data-day="5"><span>Viernes</span><span>10:00 – 21:00</span></li>
-          <li data-day="6"><span>Sábado</span><span>09:00 – 20:00</span></li>
-          <li data-day="0"><span>Domingo</span><span>10:00 – 15:00</span></li>
+          <li data-day="1"><span>Lunes</span><span>10:30 a.m. – 8:30 p.m.</span></li>
+          <li data-day="2"><span>Martes</span><span>10:30 a.m. – 8:30 p.m.</span></li>
+          <li data-day="3"><span>Miércoles</span><span>10:30 a.m. – 8:30 p.m.</span></li>
+          <li data-day="4"><span>Jueves</span><span>10:30 a.m. – 8:30 p.m.</span></li>
+          <li data-day="5"><span>Viernes</span><span>10:30 a.m. – 8:30 p.m.</span></li>
+          <li data-day="6"><span>Sábado</span><span>9:00 a.m. – 8:00 p.m.</span></li>
+          <li data-day="0"><span>Domingo</span><span>Cerrado</span></li>
         </ul>
         <div class="visit__actions">
-          <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Principal%201450" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Cómo llegar</a>
+          <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&amp;query=Don%20Morell%2C%2016%20Nte.%20Pte.%20132%20local%209%2C%20Plaza%20Marfil%2C%2029030%20Tuxtla%20Guti%C3%A9rrez%2C%20Chis." target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Cómo llegar</a>
+          <a class="btn btn--ghost" href="tel:+529612832818"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Llamar</a>
           <a class="btn btn--ghost" href="#reserva" data-whatsapp target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
         </div>
-        <p class="visit__contact"><span>+1 555 014 2014</span><span>hola@grafito.example</span></p>
+        <p class="visit__contact">Teléfono y WhatsApp: <span class="nowrap">+52 961 283 2818</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REDES -->
+  <section class="social section" aria-labelledby="social-title">
+    <div class="container">
+      <header class="section-head section-head--center" data-reveal>
+        <p class="eyebrow">Comunidad</p>
+        <h2 class="display" id="social-title">Mira el trabajo, <span class="serif">síguenos.</span></h2>
+        <p class="lead">Cortes recientes, horarios especiales y novedades, primero en nuestras redes.</p>
+      </header>
+      <div class="social__grid" data-stagger>
+        <a class="social-card" href="https://www.instagram.com/donmorell_" target="_blank" rel="noopener">
+          <svg class="social-card__icon" aria-hidden="true"><use href="#i-instagram"/></svg>
+          <span class="social-card__net">Instagram</span>
+          <span class="social-card__handle">@donmorell_</span>
+          <span class="link-arrow">Ver perfil</span>
+        </a>
+        <a class="social-card" href="https://www.facebook.com/DonMorellBarber" target="_blank" rel="noopener">
+          <svg class="social-card__icon" aria-hidden="true"><use href="#i-facebook"/></svg>
+          <span class="social-card__net">Facebook</span>
+          <span class="social-card__handle">Don Morell Barber</span>
+          <span class="link-arrow">Ver página</span>
+        </a>
+        <a class="social-card" href="#reserva" data-whatsapp target="_blank" rel="noopener">
+          <svg class="social-card__icon" aria-hidden="true"><use href="#i-chat"/></svg>
+          <span class="social-card__net">WhatsApp</span>
+          <span class="social-card__handle">+52 961 283 2818</span>
+          <span class="link-arrow">Escríbenos</span>
+        </a>
       </div>
     </div>
   </section>
@@ -593,43 +531,43 @@
 <footer class="footer">
   <div class="container">
     <div class="footer__cta" data-reveal>
-      <h2 class="display">¿Listo para tu <span class="serif text-brass">mejor versión?</span></h2>
-      <a href="#reserva" class="btn btn--brass btn--lg magnetic">Reserva tu cita</a>
+      <svg class="footer__medal" viewBox="0 0 300 300" aria-hidden="true"><use href="#dm-logo"/></svg>
+      <h2 class="display">¿Listo para tu <span class="serif">próximo corte?</span></h2>
+      <a href="#reserva" class="btn btn--primary btn--lg magnetic">Reservar cita</a>
     </div>
     <div class="footer__cols">
       <div class="footer__brand">
-        <a href="#top" class="brand" aria-label="Grafito Barber Studio, volver arriba">
-          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2.6 27.6 9.3v13.4L16 29.4 4.4 22.7V9.3z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10.2 20.8 21.8 11.2" stroke="#d6a35c" stroke-width="2" stroke-linecap="round"/></svg>
-          <span class="brand__word">GRAFITO</span>
+        <a href="#top" class="brand" aria-label="Don Morell, volver arriba">
+          <svg class="brand__word" viewBox="0 0 259.8 29.48" aria-hidden="true"><use href="#dm-wordmark"/></svg>
         </a>
-        <p>Barbería de precisión desde 2014. Cortes, barba y rituales en un estudio diseñado al milímetro.</p>
+        <p>Barbería de caballeros en Plaza Marfil, Tuxtla Gutiérrez. Corte, barba y navaja con la elegancia de siempre.</p>
         <div class="footer__social">
-          <a href="#top" aria-label="Instagram"><svg aria-hidden="true"><use href="#i-instagram"/></svg></a>
-          <a href="#reserva" aria-label="WhatsApp" data-whatsapp target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-chat"/></svg></a>
-          <a href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Principal%201450" aria-label="Google Maps" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg></a>
+          <a href="https://www.instagram.com/donmorell_" aria-label="Instagram de Don Morell" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-instagram"/></svg></a>
+          <a href="https://www.facebook.com/DonMorellBarber" aria-label="Facebook de Don Morell" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a>
+          <a href="#reserva" aria-label="WhatsApp de Don Morell" data-whatsapp target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-chat"/></svg></a>
         </div>
       </div>
-      <nav class="footer__col" aria-label="Estudio">
-        <h3>Estudio</h3>
-        <ul><li><a href="#estudio">Manifiesto</a></li><li><a href="#ritual">El ritual</a></li><li><a href="#equipo">Equipo</a></li><li><a href="#club">Club Grafito</a></li></ul>
-      </nav>
-      <nav class="footer__col" aria-label="Servicios">
-        <h3>Servicios</h3>
-        <ul><li><a href="#servicios">Corte Signature</a></li><li><a href="#servicios">Fade de Precisión</a></li><li><a href="#servicios">Barba y afeitado</a></li><li><a href="#servicios">Ritual Grafito</a></li></ul>
+      <nav class="footer__col" aria-label="Secciones">
+        <h3>Secciones</h3>
+        <ul><li><a href="#estudio">El estudio</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#ritual">El ritual</a></li><li><a href="#reserva">Reservar</a></li></ul>
       </nav>
       <div class="footer__col">
+        <h3>Contacto</h3>
+        <ul><li><a href="tel:+529612832818">+52 961 283 2818</a></li><li>16 Nte. Pte. 132, local 9</li><li>Plaza Marfil, Tuxtla Gutiérrez</li></ul>
+      </div>
+      <div class="footer__col">
         <h3>Horario</h3>
-        <ul><li>Lun – Vie · 10:00 – 21:00</li><li>Sáb · 09:00 – 20:00</li><li>Dom · 10:00 – 15:00</li></ul>
+        <ul><li>Lun – Vie · 10:30 a.m. – 8:30 p.m.</li><li>Sáb · 9:00 a.m. – 8:00 p.m.</li><li>Dom · Cerrado</li></ul>
       </div>
     </div>
     <div class="footer__legal">
-      <p>© <span id="year">2026</span> Grafito Barber Studio. Todos los derechos reservados.</p>
-      <p class="footer__links"><a href="#top">Privacidad</a><a href="#top">Términos</a></p>
+      <p>© <span id="year">2026</span> Don Morell. Tuxtla Gutiérrez, Chiapas.</p>
+      <p><a href="#top">Volver arriba</a></p>
     </div>
   </div>
-  <div class="footer__word" aria-hidden="true">GRAFITO</div>
+  <svg class="footer__word" viewBox="0 0 259.8 29.48" aria-hidden="true"><use href="#dm-wordmark"/></svg>
 </footer>
 
-<p class="demo-pill" role="note"><span class="demo-pill__dot" aria-hidden="true"></span>Demo ·&nbsp;<span class="demo-pill__long">textos, precios y reseñas</span><span class="demo-pill__short">contenido</span>&nbsp;de ejemplo</p>
+<p class="demo-pill" role="note"><span class="demo-pill__dot" aria-hidden="true"></span>Vista previa ·&nbsp;<span class="demo-pill__long">precios y duraciones de ejemplo</span><span class="demo-pill__short">precios de ejemplo</span></p>
 </body>
 </html>

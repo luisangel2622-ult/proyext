@@ -1,54 +1,73 @@
 /* ==========================================================================
-   Reservas: servicio → barbero → día → hora → nombre, y envío por WhatsApp.
-   La ocupación de horas es de ejemplo (no hay servidor); la confirmación
-   real la hace el estudio al recibir el mensaje.
-   También calcula el estado "Abierto ahora" de la sección Visítanos.
+   Reservas de Don Morell: servicio → día → hora → datos, y envío por WhatsApp.
+   No hay servidor: la barbería confirma la cita al recibir el mensaje.
+   También calcula el estado «Abierto ahora / Cerrado» de la portada y de Ubicación.
    ========================================================================== */
 (function () {
   'use strict';
 
-  var cfg = window.GRAFITO || {};
+  var cfg = window.DONMORELL || {};
   var hours = cfg.hours || {};
   var services = cfg.services || [];
-  var barbers = cfg.barbers || [];
+  var closed = cfg.closedDates || [];
   var SLOT = cfg.slotMinutes || 30;
   var CUR = cfg.currency || '$';
+  var PHONE = cfg.phone || '';
   var DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
 
   function pad(n) { return (n < 10 ? '0' : '') + n; }
-  function hm(mins) { return pad(Math.floor(mins / 60)) + ':' + pad(Math.round(mins % 60)); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
   function byId(id) { return document.getElementById(id); }
+  function keyOf(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function sameDay(a, b) { return keyOf(a) === keyOf(b); }
+
+  // 630 → "10:30" · 1050 → "5:30"
+  function clock(mins) {
+    var h = Math.floor(mins / 60) % 24;
+    var m = Math.round(mins % 60);
+    var h12 = h % 12 === 0 ? 12 : h % 12;
+    return h12 + ':' + pad(m);
+  }
+  function ampm(mins) { return Math.floor(mins / 60) % 24 < 12 ? 'a.m.' : 'p.m.'; }
+  function time12(mins) { return clock(mins) + ' ' + ampm(mins); }
+
+  function rangeFor(date) {
+    if (closed.indexOf(keyOf(date)) !== -1) return null;
+    return hours[date.getDay()] || null;
+  }
 
   /* ---------- Estado de apertura ---------- */
   function openStatus() {
-    var box = byId('open-status');
-    if (!box) return;
+    var boxes = document.querySelectorAll('[data-status]');
+    if (!boxes.length) return;
     var now = new Date();
-    var day = now.getDay();
     var mins = now.getHours() * 60 + now.getMinutes();
-    var today = hours[day];
+    var today = rangeFor(now);
     var open = false;
-    var text = 'Consulta nuestro horario';
+    var text = 'Lunes a sábado';
     if (today && mins >= today[0] * 60 && mins < today[1] * 60) {
       open = true;
-      text = 'Abierto ahora · cierra a las ' + hm(today[1] * 60);
+      text = 'Abierto ahora · cierra a las ' + time12(today[1] * 60);
     } else if (today && mins < today[0] * 60) {
-      text = 'Cerrado · abre hoy a las ' + hm(today[0] * 60);
+      text = 'Cerrado · abre hoy a las ' + time12(today[0] * 60);
     } else {
-      for (var i = 1; i <= 7; i++) {
-        var d = (day + i) % 7;
-        if (hours[d]) {
-          text = 'Cerrado · abre ' + (i === 1 ? 'mañana' : 'el ' + DAY_NAMES[d]) + ' a las ' + hm(hours[d][0] * 60);
+      for (var i = 1; i <= 14; i++) {
+        var d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
+        var r = rangeFor(d);
+        if (r) {
+          text = 'Cerrado · abre ' + (i === 1 ? 'mañana' : 'el ' + DAY_NAMES[d.getDay()]) + ' a las ' + time12(r[0] * 60);
           break;
         }
       }
     }
-    box.classList.toggle('is-open', open);
-    box.classList.toggle('is-closed', !open);
-    box.querySelector('.status__text').textContent = text;
+    Array.prototype.forEach.call(boxes, function (box) {
+      box.classList.toggle('is-open', open);
+      box.classList.toggle('is-closed', !open);
+      var t = box.querySelector('.status__text');
+      if (t) t.textContent = text;
+    });
     Array.prototype.forEach.call(document.querySelectorAll('#hours li'), function (li) {
-      li.classList.toggle('is-today', li.getAttribute('data-day') === String(day));
+      li.classList.toggle('is-today', li.getAttribute('data-day') === String(now.getDay()));
     });
   }
   openStatus();
@@ -58,20 +77,23 @@
   var form = byId('booker');
   if (!form) return;
 
-  var fmtLong = new Intl.DateTimeFormat('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
-  var fmtWeek = new Intl.DateTimeFormat('es-ES', { weekday: 'short' });
-  var fmtMonth = new Intl.DateTimeFormat('es-ES', { month: 'short' });
+  var fmtLong = new Intl.DateTimeFormat('es-MX', { weekday: 'long', day: 'numeric', month: 'long' });
+  var fmtWeek = new Intl.DateTimeFormat('es-MX', { weekday: 'short' });
+  var fmtMonth = new Intl.DateTimeFormat('es-MX', { month: 'short' });
 
-  var state = { service: null, barber: null, day: null, time: null };
+  var state = { service: null, day: null, time: null };
   var dayMap = {};
   var errorBox = byId('bk-error');
   var nameInput = byId('bk-name');
+  var noteInput = byId('bk-note');
   var summaryView = byId('bk-summary');
   var doneView = byId('bk-done');
 
-  function getService() { for (var i = 0; i < services.length; i++) if (services[i].id === state.service) return services[i]; return null; }
-  function getBarber() { for (var i = 0; i < barbers.length; i++) if (barbers[i].id === state.barber) return barbers[i]; return null; }
-  function sameDay(a, b) { return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate(); }
+  function getService() {
+    for (var i = 0; i < services.length; i++) if (services[i].id === state.service) return services[i];
+    return null;
+  }
+  function longDay(d) { return fmtLong.format(d).replace(',', ''); }
 
   function makeChip(group, value, build, disabled) {
     var label = document.createElement('label');
@@ -96,7 +118,7 @@
     return e;
   }
 
-  // Servicios y barberos
+  // Servicios
   var svcBox = byId('bk-services');
   services.forEach(function (s) {
     svcBox.appendChild(makeChip('service', s.id, function (face) {
@@ -104,15 +126,8 @@
       addText(face, 'small', s.minutes + ' min · ' + CUR + s.price);
     }));
   });
-  var barBox = byId('bk-barbers');
-  barbers.forEach(function (b) {
-    barBox.appendChild(makeChip('barber', b.id, function (face) {
-      face.appendChild(document.createTextNode(b.name));
-      if (b.note) addText(face, 'small', b.note);
-    }));
-  });
 
-  // Próximos 7 días con horario
+  // Próximos 7 días con servicio
   function buildDays() {
     var box = byId('bk-days');
     box.textContent = '';
@@ -121,12 +136,12 @@
     var base = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     var tomorrow = new Date(base.getFullYear(), base.getMonth(), base.getDate() + 1);
     var count = 0;
-    for (var i = 0; count < 7 && i < 21; i++) {
+    for (var i = 0; count < 7 && i < 28; i++) {
       var day = new Date(base.getFullYear(), base.getMonth(), base.getDate() + i);
-      var h = hours[day.getDay()];
+      var h = rangeFor(day);
       if (!h) continue;
       if (i === 0 && now.getHours() * 60 + now.getMinutes() + 30 > h[1] * 60 - 30) continue;
-      var key = day.getFullYear() + '-' + pad(day.getMonth() + 1) + '-' + pad(day.getDate());
+      var key = keyOf(day);
       dayMap[key] = day;
       count++;
       box.appendChild(makeChip('day', key, (function (d) {
@@ -140,14 +155,7 @@
     }
   }
 
-  // Ocupación de ejemplo, estable por día, hora y barbero
-  function isBusy(dayKey, m, barber) {
-    var s = dayKey + '|' + m + '|' + (barber || 'any');
-    var h = 0;
-    for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
-    return (!barber || barber === 'any') ? h % 7 === 0 : h % 4 === 0;
-  }
-
+  // Horas del día elegido, agrupadas en mañana, tarde y noche
   function buildSlots() {
     var box = byId('bk-slots');
     var hint = byId('bk-slots-hint');
@@ -155,27 +163,44 @@
     box.textContent = '';
     state.time = null;
     if (!state.day || !dayMap[state.day]) {
-      hint.textContent = 'Elige un día para ver las horas libres.';
+      hint.textContent = 'Elige un día para ver los horarios.';
       updateSummary();
       return;
     }
     var day = dayMap[state.day];
-    var h = hours[day.getDay()];
+    var h = rangeFor(day);
     var svc = getService();
     var dur = svc ? svc.minutes : SLOT;
     var now = new Date();
     var minStart = sameDay(day, now) ? now.getHours() * 60 + now.getMinutes() + 30 : -1;
+    var groups = [
+      { label: 'Mañana', from: 0, to: 12 * 60, items: [] },
+      { label: 'Tarde', from: 12 * 60, to: 18 * 60, items: [] },
+      { label: 'Noche', from: 18 * 60, to: 24 * 60, items: [] }
+    ];
     var free = 0;
     for (var m = h[0] * 60; m + dur <= h[1] * 60; m += SLOT) {
-      var off = m < minStart || isBusy(state.day, m, state.barber);
-      if (!off) free++;
-      var c = makeChip('time', String(m), (function (mm) {
-        return function (face) { face.appendChild(document.createTextNode(hm(mm))); };
-      })(m), off);
-      if (off) c.title = m < minStart ? 'Ya pasó' : 'Ocupado';
-      box.appendChild(c);
+      var past = m < minStart;
+      if (!past) free++;
+      var chip = makeChip('time', String(m), (function (mm) {
+        return function (face) { face.appendChild(document.createTextNode(clock(mm))); };
+      })(m), past);
+      chip.querySelector('input').setAttribute('aria-label', time12(m));
+      if (past) chip.title = 'Ya pasó';
+      for (var g = 0; g < groups.length; g++) if (m >= groups[g].from && m < groups[g].to) groups[g].items.push(chip);
     }
-    hint.textContent = free ? '' : 'No quedan horas libres este día. Prueba con otro.';
+    groups.forEach(function (g) {
+      if (!g.items.length) return;
+      var wrap = document.createElement('div');
+      wrap.className = 'slot-group';
+      addText(wrap, 'p', g.label).className = 'slot-group__label';
+      var grid = document.createElement('div');
+      grid.className = 'slot-group__grid';
+      g.items.forEach(function (c) { grid.appendChild(c); });
+      wrap.appendChild(grid);
+      box.appendChild(wrap);
+    });
+    hint.textContent = free ? '' : 'Ya no quedan horarios hoy. Elige otro día.';
     if (prev != null) {
       var keep = byId('time-' + prev);
       if (keep && !keep.disabled) { keep.checked = true; state.time = prev; }
@@ -193,11 +218,10 @@
   }
   function updateSummary() {
     var svc = getService();
-    var bar = getBarber();
     setText('sum-service', svc ? svc.name : '—');
-    setText('sum-barber', bar ? bar.name : '—');
-    setText('sum-day', state.day && dayMap[state.day] ? cap(fmtLong.format(dayMap[state.day])) : '—');
-    setText('sum-time', state.time != null ? hm(state.time) : '—');
+    setText('sum-day', state.day && dayMap[state.day] ? cap(longDay(dayMap[state.day])) : '—');
+    setText('sum-time', state.time != null ? time12(state.time) : '—');
+    setText('sum-length', svc ? svc.minutes + ' min' : '—');
     setText('sum-total', CUR + (svc ? svc.price : 0));
   }
 
@@ -205,7 +229,6 @@
     var t = e.target;
     if (t.type !== 'radio') return;
     if (t.name === 'service') { state.service = t.value; buildSlots(); }
-    else if (t.name === 'barber') { state.barber = t.value; buildSlots(); }
     else if (t.name === 'day') { state.day = t.value; buildSlots(); }
     else if (t.name === 'time') { state.time = parseInt(t.value, 10); updateSummary(); }
     errorBox.textContent = '';
@@ -222,10 +245,10 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var name = nameInput.value.trim();
+    var note = noteInput ? noteInput.value.trim() : '';
     if (!state.service) { errorBox.textContent = 'Elige un servicio para continuar.'; return focusGroup('bk-services'); }
-    if (!state.barber) { errorBox.textContent = 'Elige un barbero o «Sin preferencia».'; return focusGroup('bk-barbers'); }
-    if (!state.day) { errorBox.textContent = 'Elige un día para tu cita.'; return focusGroup('bk-days'); }
-    if (state.time == null) { errorBox.textContent = 'Elige una hora libre.'; return focusGroup('bk-slots'); }
+    if (!state.day) { errorBox.textContent = 'Elige el día de tu cita.'; return focusGroup('bk-days'); }
+    if (state.time == null) { errorBox.textContent = 'Elige un horario.'; return focusGroup('bk-slots'); }
     if (!name) {
       errorBox.textContent = 'Escribe tu nombre para continuar.';
       nameInput.focus({ preventScroll: true });
@@ -234,20 +257,21 @@
     }
 
     var svc = getService();
-    var bar = getBarber();
-    var dayText = fmtLong.format(dayMap[state.day]);
-    var who = bar.id === 'any' ? 'el primer barbero libre' : bar.name;
-    var msg = 'Hola, Grafito. Quiero reservar una cita:\n'
-      + '• Servicio: ' + svc.name + ' (' + svc.minutes + ' min, ' + CUR + svc.price + ')\n'
-      + '• Barbero: ' + bar.name + '\n'
-      + '• Día: ' + dayText + '\n'
-      + '• Hora: ' + hm(state.time) + '\n'
-      + '• Nombre: ' + name;
+    var dayText = longDay(dayMap[state.day]);
+    var lines = [
+      'Hola, Don Morell. Quiero agendar una cita:',
+      '• Servicio: ' + svc.name + ' (' + svc.minutes + ' min, ' + CUR + svc.price + ')',
+      '• Día: ' + dayText,
+      '• Hora: ' + time12(state.time),
+      '• Nombre: ' + name
+    ];
+    if (note) lines.push('• Nota: ' + note);
 
-    byId('bk-whatsapp').href = 'https://wa.me/' + (cfg.whatsapp || '') + '?text=' + encodeURIComponent(msg);
+    byId('bk-whatsapp').href = 'https://wa.me/' + (cfg.whatsapp || '') + '?text=' + encodeURIComponent(lines.join('\n'));
     byId('done-title').textContent = 'Casi listo, ' + name + '.';
-    byId('done-text').textContent = 'Tu solicitud: ' + svc.name + ' con ' + who + ', el ' + dayText + ' a las ' + hm(state.time)
-      + '. Envíala por WhatsApp y te confirmamos la cita en minutos.';
+    // time12 ya termina en «a.m.» / «p.m.», que cierra la frase
+    byId('done-text').textContent = 'Tu solicitud: ' + svc.name + ', el ' + dayText + ' a las ' + time12(state.time)
+      + ' Envíala por WhatsApp y te confirmamos la cita.';
     summaryView.hidden = true;
     doneView.hidden = false;
     var titleEl = byId('done-title');
@@ -262,8 +286,8 @@
     if (submit) submit.focus({ preventScroll: true });
   });
 
-  // API para los enlaces "Reservar" de servicios y equipo
-  window.GrafitoBooking = {
+  // API para los enlaces «Reservar» de cada servicio
+  window.DMBooking = {
     pick: function (group, value) {
       var input = byId(group + '-' + value);
       if (!input || input.disabled) return;
@@ -274,7 +298,6 @@
   };
 
   buildDays();
-  // Estado inicial de ejemplo: el servicio más pedido y sin preferencia de barbero
-  window.GrafitoBooking.pick('service', 'signature');
-  window.GrafitoBooking.pick('barber', 'any');
+  window.DMBooking.pick('service', 'corte');
+  if (PHONE) form.setAttribute('data-phone', PHONE);
 })();

@@ -1,7 +1,8 @@
 /* ==========================================================================
-   Hero: hebras de cabello generativas en canvas.
-   Grafito frío con alguna hebra de latón, un brillo que recorre la "melena"
-   y el cursor que la peina al pasar.
+   Portada: hebras de cabello generativas en canvas.
+   Toman su color del tema activo (marfil sobre ébano / tinta sobre marfil),
+   con alguna hebra champán, un brillo que recorre la melena y el cursor que
+   la peina al pasar.
    ========================================================================== */
 (function () {
   'use strict';
@@ -9,6 +10,7 @@
   var canvas = document.querySelector('.hero__canvas');
   if (!canvas || !canvas.getContext) return;
   var ctx = canvas.getContext('2d');
+  var root = document.documentElement;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var W = 0, H = 0, DPR = 1;
@@ -17,8 +19,16 @@
   var visible = true;
   var t0 = performance.now();
   var mouse = { x: 0, y: 0, tx: 0, ty: 0, k: 0, kt: 0 };
+  var color = { base: '205,212,222', accent: '220,198,156', alpha: 1 };
 
   function rand(a, b) { return a + Math.random() * (b - a); }
+
+  function readTheme() {
+    var cs = getComputedStyle(root);
+    color.base = (cs.getPropertyValue('--strand') || '205,212,222').trim();
+    color.accent = (cs.getPropertyValue('--strand-accent') || '220,198,156').trim();
+    color.alpha = parseFloat(cs.getPropertyValue('--strand-alpha')) || 1;
+  }
 
   function build() {
     var count = Math.round(Math.min(170, Math.max(56, W / 8.5)));
@@ -66,7 +76,7 @@
     for (var i = 0; i < strands.length; i++) {
       var s = strands[i];
       var d = s.u - sheen;
-      var alpha = s.base + Math.exp(-(d * d) / 0.006) * 0.45;
+      var alpha = (s.base + Math.exp(-(d * d) / 0.006) * 0.45) * color.alpha;
 
       ctx.beginPath();
       for (var y = -20; y <= H + 20; y += step) {
@@ -82,8 +92,8 @@
       }
       ctx.lineWidth = s.width;
       ctx.strokeStyle = s.gold
-        ? 'rgba(214,163,92,' + Math.min(1, alpha * 1.8).toFixed(3) + ')'
-        : 'rgba(205,212,222,' + alpha.toFixed(3) + ')';
+        ? 'rgba(' + color.accent + ',' + Math.min(1, alpha * 1.8).toFixed(3) + ')'
+        : 'rgba(' + color.base + ',' + alpha.toFixed(3) + ')';
       ctx.stroke();
     }
   }
@@ -107,6 +117,12 @@
   document.addEventListener('pointerleave', function () { mouse.kt = 0; });
   window.addEventListener('blur', function () { mouse.kt = 0; });
 
+  // Cambio de tema: botón de la página, preferencia del sistema o visor externo
+  function onTheme() { readTheme(); if (!raf) draw(reduce ? t0 + 4000 : performance.now()); }
+  window.addEventListener('dm:theme', onTheme);
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+  if (mq.addEventListener) mq.addEventListener('change', onTheme);
+
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (entries) {
       visible = entries[0].isIntersecting;
@@ -125,6 +141,7 @@
     window.addEventListener('resize', resize);
   }
 
+  readTheme();
   resize();
   play();
 })();
